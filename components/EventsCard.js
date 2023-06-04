@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-
 import React from "react";
 
 function EventsCard({ data }) {
@@ -10,7 +9,7 @@ function EventsCard({ data }) {
   };
 
   return (
-    <div className="w-[370px] border border-white/20 rounded-2xl p-5 ml-0">
+    <div className="w-[370px] md:w-[340px] border border-white/20 rounded-2xl p-5 ml-0">
       <div className="p-2 relative w-full overflow-hidden h-[200px] rounded">
         <img
           src={data.image.url}
@@ -25,7 +24,7 @@ function EventsCard({ data }) {
       <div className="flex items-center justify-between mt-5">
         {data.state == "register" && (
           <button
-            className="px-6 py-2 rounded-full bg-white text-black text-xs"
+            className="px-6 py-2 rounded-full bg-white text-black text-xs hover:bg-gray-200"
             onClick={handleRegisterClick}
           >
             Register

@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-
 import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import axios from "axios";
@@ -59,6 +58,13 @@ function Contact() {
     }
   };
 
+  const openMap = () => {
+    const link = 'https://www.google.com/maps/place/KIIT+Student+Activity+Center+-+KSAC/@20.3548831,85.8191383,16.7z/data=!4m6!3m5!1s0x3a19093cc3e1974b:0x85a345e1f4fcce86!8m2!3d20.3566159!4d85.818928!16s%2Fg%2F11bx2gww9n?entry=ttu'
+    if (window.innerWidth < 768) {
+      window.open(link, '_blank')
+    }
+  }
+
   return (
     <>
       <Head><title>Konnexions - Contact</title></Head>
@@ -78,8 +84,8 @@ function Contact() {
               <div className="text-white text-center mt-4 text-[.7rem] md:text-[1rem] w-[100vw] px-6 leading-7">
                 Reach Out to Us for Any Inquiries, Collaborations, or Just a Friendly Chat.
               </div>
-              <div className="relative body-font mx-4 lg:mx-24 mt-6 lg:mt-12 rounded-lg">
-                <div className="absolute inset-0 bg-gray-300 rounded-lg">
+              <div className="relative body-font mx-4 lg:mx-24 mt-6 lg:mt-12">
+                <div className="absolute inset-0">
                   <iframe
                     width="100%"
                     height="100%"
@@ -91,8 +97,10 @@ function Contact() {
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2630.269281427254!2d85.82064982337539!3d20.35791870849655!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a19093cc3e1974b%3A0x85a345e1f4fcce86!2sKIIT%20Student%20Activity%20Center%20-%20KSAC!5e0!3m2!1sen!2sin!4v1685780284805!5m2!1sen!2sin"
                     style={{ filter: "grayscale(100%) invert(92%) contrast(83%)" }}
                     allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"
+                    className="rounded-lg"
                   ></iframe>
                 </div>
+                <div className="absolute inset-0 bg-gradient-to-br from-indigo-800/40 to-slate-950/70 rounded-lg lg:pointer-events-none" onClick={ openMap }></div>
                 <div className="flex container mx-auto px-5 py-5 pt-24">
                   <div className="lg:w-1/3 md:w-1/2 bg-transparent backdrop-blur-md rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0 relative sm:z-10 -z-1 opacity-90 lg:opacity-100 border">
                     <form onSubmit={handleSubmit}>
@@ -149,7 +157,7 @@ function Contact() {
                         <div className="text-red-700">{gmailError}</div>
                         <button
                           disabled={!formSubmit}
-                          className="text-sm py-2 px-8 rounded-md mt-4 cursor-pointer transition duration bg-indigo-900 text-white hover:bg-indigo-600"
+                          className="text-sm py-2 px-8 rounded-md mt-4 cursor-pointer transition duration bg-zinc-600/50 text-white hover:bg-indigo-600/50"
                         >
                           Submit
                         </button>

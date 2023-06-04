@@ -4,7 +4,7 @@ import { FaLink } from "react-icons/fa";
 
 export default function ResourcesCard({ data }) {
   return (
-    <div className="relative w-[170px] h-[220px] lg:w-[250px] lg:h-[315px] backdrop-blur">
+    <div className="relative w-[250px] h-[315px] backdrop-blur">
       <img
         src="/servicesRectangle.png"
         alt=""
@@ -27,7 +27,7 @@ export default function ResourcesCard({ data }) {
             <span className="text-white font-medium">{data.category}</span>
           </div>
           <a href={data.href} className="p-2">
-            <FaLink size={18} color="fff" />
+            <FaLink size={18} className="hover:text-blue-400 text-white" />
           </a>
         </div>
       </div>
