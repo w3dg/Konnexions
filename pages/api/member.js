@@ -1,56 +1,57 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-
 import { client, gql } from "@/graph";
 
-export default async function handler(req, res) {
+const handler = async(req, res) => {
   const query = gql`
     query Members {
-      members {
+      memberPages {
+        heading
+        description
         member {
           name
-          bio
+          email
+          domain
           image {
             url
           }
-          team
-          email
-          githubLink
+          techLink
           other
         }
         leads {
           name
-          bio
+          email
+          domain
           image {
             url
           }
-          team
-          email
-          githubLink
+          techLink
           other
         }
         others {
           name
-          bio
+          email
+          domain
           image {
             url
           }
-          team
-          email
-          githubLink
+          techLink
           other
         }
       }
     }
   `;
-  try {
-    const { members } = await client.request(query);
+  
+  await client.request(query).then((data) => {
+    console.log(data);
     res.status(200).json({
-      data: members[0],
+      data: data.memberPages[0],
     });
-  } catch (error) {
-    console.log(error);
+  }).catch((err) => {
+    console.log(err);
     res.status(500).json({
-      error: error,
+      error: err,
     });
-  }
+  });
 }
+
+export default handler;
