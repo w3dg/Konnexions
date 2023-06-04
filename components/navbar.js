@@ -20,7 +20,7 @@ function NavBar() {
             <Link href="/team">Team</Link>
           </li>
           <li className="text-white/70 hover:text-white text-sm transition-all">
-            <Link href="/">Projects & Achievemets</Link>
+            <Link href="/projects">Projects & Achievemets</Link>
           </li>
           <li className="text-white/70 hover:text-white text-sm transition-all">
             <Link href="/contact">Contact us</Link>
@@ -79,19 +79,17 @@ function NavBar() {
             </div>
           </div>
           <ul className="px-6 text-center space-y-12 mt-16">
-            <li className="text-white/70 hover:text-white text-sm transition-all">
-              <Link href="/ProjectsAndAchievements">Home</Link>
+            <li className="text-white/70 hover:text-white transition-all">
+              <Link href="/">Home</Link>
             </li>
-            <li className="text-white/70 hover:text-white text-sm transition-all">
-              <Link href="/ProjectsAndAchievements">Team</Link>
+            <li className="text-white/70 hover:text-white transition-all">
+              <Link href="/team">Team</Link>
             </li>
-            <li className="text-white/70 hover:text-white text-sm transition-all">
-              <Link href="/ProjectsAndAchievements">
-                Projects & Achievemets
-              </Link>
+            <li className="text-white/70 hover:text-white transition-all">
+              <Link href="/projects">Projects & Achievemets</Link>
             </li>
-            <li className="text-white/70 hover:text-white text-sm transition-all">
-              <Link href="/ProjectsAndAchievements">Contact us</Link>
+            <li className="text-white/70 hover:text-white transition-all">
+              <Link href="/contact">Contact us</Link>
             </li>
           </ul>
         </div>
