@@ -1,11 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 import Achievement from "@/components/Achievement";
-import NavBar from "@/components/navbar";
+import NavBar from "@/components/Navbar";
 import React from "react";
+import Head from "next/head";
 
 function Projects() {
   return (
     <div className="fixed inset-0 h-screen w-screen overflow-hidden bg-black">
+      <Head><title>Konnexions - Resources</title></Head>
       <NavBar />
 
       <div className="h-full w-full relative overflow-y-auto overflow-x-hidden mb-44 pb-44 scrollbar-hide">
