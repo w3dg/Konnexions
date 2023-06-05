@@ -10,13 +10,13 @@ const MemberCard = ({ data }) => {
       <img
         src="/borderFrame.png"
         className="absolute inset-0 w-full h-full"
-        alt=""
+        alt="borderFrame"
       />
       <div className="absolute inset-0 top-16 h-full w-[218px] mx-auto">
         <div className="p-2 relative w-full overflow-hidden h-[200px] rounded">
           <img
             src={data.image.url}
-            alt=""
+            alt={data.name}
             className="object-cover w-[95%] mx-auto mt-1 h-auto absolute inset-0  rounded"
           />
         </div>

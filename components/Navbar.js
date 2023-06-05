@@ -47,7 +47,7 @@ export default function NavBar() {
           </li> )}
         )}
       </ul>
-      <div  onClick={() => setSidenavOpen(!sidenavOpen)} className="lg:hidden flex items-center">
+      <div onClick={() => setSidenavOpen(!sidenavOpen)} className="lg:hidden flex items-center ml-auto">
         <button className="block lg:hidden text-white">
           <div className="w-6 flex items-center justify-center relative">
             <span

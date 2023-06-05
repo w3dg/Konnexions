@@ -44,11 +44,11 @@ const EventsCard = ({ data }) => {
       <div className="p-2 relative w-full overflow-hidden h-[200px] rounded">
         <img
           src={data.image.url}
-          alt=""
+          alt={data.name}
           className="object-cover w-[95%] mx-auto mt-1 h-auto absolute inset-0  rounded"
         />
       </div>
-      <h1 className="mt-6 text-lg text-white">{data.name}</h1>
+      <h3 className="mt-6 text-lg text-white">{data.name}</h3>
       <p className="text-white/40 text-xs leading-7 mt-1">
         {data.description.substring(0, 150) + "..."}
       </p>

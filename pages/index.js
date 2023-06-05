@@ -81,32 +81,32 @@ const Home = ({ data }) => {
       <div className="h-full w-full relative overflow-y-auto overflow-x-hidden mb-44 pb-44 scrollbar-hide">
         <img
           src="/landingGradient_1.png"
-          alt=""
+          alt="landingGradient_1"
           className="absolute top-0 left-0 bg-transparent h-full w-full lg:-translate-x-[10%] lg:h-[1000px] lg:w-[1000px]"
         />
         <img
           src="/landingGradient_2.png"
-          alt=""
+          alt="landingGradient_2"
           className="absolute top-0 lg:top-0 right-0 bg-transparent h-full w-full lg:h-[1000px] lg:w-[1000px] lg:translate-x-[20%] translate-x-[10%]"
         />
         <img
           src="/landingGradient_3.png"
-          alt=""
+          alt="landingGradient_3"
           className="absolute top-[400px] lg:top-[200px] left-0 bg-transparent h-[1700px] w-[1700px] lg:h-[2200px] lg:w-[2200px] lg:-translate-x-[10%] -translate-x-[5%]"
         />
         <img
           src="/landingGradient_4.png"
-          alt=""
+          alt="landingGradient_4"
           className="absolute top-[2200px] lg:top-[1000px] right-0 bg-transparent h-[1700px] w-[1700px] lg:h-[2200px] lg:w-[2200px] lg:translate-x-[10%] translate-x-[5%]"
         />
         <img
           src="/calendar.png"
-          alt=""
+          alt="calendar"
           className="absolute object-contain top-[1000px] lg:top-[900px] left-0 bg-transparent h-[300px] w-[300px] lg:h-[500px] lg:w-[500px] lg:-translate-x-[30%] -translate-x-[30%]"
         />
         <img
           src="/outlineCircleLanding.png"
-          alt=""
+          alt="outlineCircleLanding"
           className="absolute top-24 lg:top-0 -right-6 bg-transparent h-[600px] lg:h-[800px]"
         />
         <div className="absolute z-10 h-fit w-full pt-32 pb-28 lg:pt-44 px-6 lg:px-24">
@@ -140,7 +140,7 @@ const Home = ({ data }) => {
                   >
                     <img
                       src={item.icon.url}
-                      alt=""
+                      alt={item.name}
                       className="h-8 w-8 cursor-pointer"
                     />
                   </a>
@@ -154,16 +154,16 @@ const Home = ({ data }) => {
                     <img
                       src="/calendarIcon.png"
                       className="absolute inset-0"
-                      alt=""
+                      alt="calendarIcon"
                     />
                     <div className="absolute inset-0 flex items-center justify-center font-bold text-slate-800">
                       {currEvent.date.split("-")[2]}
                     </div>
                   </div>
                   <div className="ml-4 mr-4">
-                    <h1 className="text-white font-semibold text-sm">
+                    <h2 className="text-white font-semibold text-sm">
                       {currEvent.name}
-                    </h1>
+                    </h2>
                     <span className="text-[10px] text-white">
                       {currEvent.date}
                     </span>
@@ -173,9 +173,9 @@ const Home = ({ data }) => {
             )}
           </div>
           <div className="mt-56">
-            <h1 className="text-center text-white text-xl lg:text-3xl font-bold lg:font-extrabold leading-[1.6]">
+            <h2 className="text-center text-white text-xl lg:text-3xl font-bold lg:font-extrabold leading-[1.6]">
               {data.serviceHeading}
-            </h1>
+            </h2>
             <p className="text-white/70 text-sm text-center mt-3">
               {data.serviceDescription}
             </p>
@@ -186,9 +186,9 @@ const Home = ({ data }) => {
             </div>
           </div>
           <div className="mt-56">
-            <h1 className="text-center text-white text-xl lg:text-3xl font-bold lg:font-extrabold leading-[1.6]">
+            <h2 className="text-center text-white text-xl lg:text-3xl font-bold lg:font-extrabold leading-[1.6]">
               {data.eventsHeading}
-            </h1>
+            </h2>
             <p className="text-white/70 text-sm text-center mt-3">
               {data.eventsDescription}
             </p>
@@ -199,17 +199,17 @@ const Home = ({ data }) => {
             </div>
           </div>
           <div className="mt-56">
-            <h1 className="text-center text-white text-xl lg:text-3xl font-bold lg:font-extrabold leading-[1.6]">
+            <h2 className="text-center text-white text-xl lg:text-3xl font-bold lg:font-extrabold leading-[1.6]">
               {data.newsHeading}
-            </h1>
+            </h2>
             <p className="text-white/70 text-sm text-center mt-3">
               {data.newsDescription}
             </p>
             <div className="w-full lg:w-[70%] mt-10 h-fit mx-auto bg-[#151515] grid grid-cols-1 lg:grid-cols-2 rounded-lg lg:rounded-2xl">
               <div className="p-5 lg:p-10">
-                <h1 className="text-lg lg:text-2xl text-white font-semibold">
+                <h3 className="text-lg lg:text-2xl text-white font-semibold">
                   Signup for the weekly newsletter.
-                </h1>
+                </h3>
                 <p className="text-white/70 text-xs leading-6 mt-3">
                   {data.newsContent}
                 </p>
@@ -237,7 +237,7 @@ const Home = ({ data }) => {
                 )}
               </div>
               <div className="flex items-center justify-center w-full">
-                <img src="/mail.png" className="hidden lg:block h-44" alt="" />
+                <img src="/mail.png" className="hidden lg:block h-44" alt="mail" />
               </div>
             </div>
           </div>
