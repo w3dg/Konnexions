@@ -1,13 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 
-function EventsCard({ data }) {
-  const handleRegisterClick = () => {
-    if (isFutureEvent) {
-      window.open(data.regLink, "_blank");
-    }
-  };
-
+export default function EventsCard({ data }) {
   const fun = () =>{
     let timeouts = [], intervals = [];
 
@@ -20,7 +14,6 @@ function EventsCard({ data }) {
       star.offsetHeight;
       star.style.animation = "";
     }
-
     const magic = document.querySelector(".magic");
     magic.onmouseenter = () => {
       let index = 1;
@@ -40,9 +33,8 @@ function EventsCard({ data }) {
     }
   }
   
-  React.useEffect(() => {
-    fun();
-  }, []);
+  React.useEffect(() => fun(), []);
+  const handleRegisterClick = () => window.open(data.regLink, "_blank");
 
   return (
     <div className="w-[370px] md:w-[340px] border border-white/20 rounded-2xl p-5 ml-0">
@@ -71,8 +63,8 @@ function EventsCard({ data }) {
                   </svg>
                 </span>
               ))}
-              <button className="magic-text font-bold"
-                onClick={handleRegisterClick}>Register</button>
+              <p className="magic-text font-bold"
+                onClick={handleRegisterClick}>Register</p>
             </span>
           </button>
         )}
@@ -81,5 +73,3 @@ function EventsCard({ data }) {
     </div>
   );
 }
-
-export default EventsCard;

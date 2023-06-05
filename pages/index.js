@@ -19,11 +19,12 @@ export async function getServerSideProps() {
   };
 }
 
-export default function Home({ data }) {
+const Home = ({ data }) => {
   const [gmailError, setGmailError] = useState("");
   const [formSubmit, setFormSubmit] = useState(false);
   const [subDetails, setSubDetails] = useState({ email: "" });
   const [successMsg, setSuccessMsg] = useState(false);
+  const [currEvent, setCurrEvent] = useState(null);
 
   useEffect(() => {
     const emailRegex = new RegExp(
@@ -66,6 +67,11 @@ export default function Home({ data }) {
       alert("Something went wrong");
     }
   };
+
+  useEffect(() => {
+    setCurrEvent(data.events.filter((event) => event.state == "register")[0]);
+  }, []);
+  const handleRegisterClick = () => window.open(currEvent.regLink, "_blank");
 
   return (
     <div className="h-screen w-screen fixed inset-0 bg-[#02001A] overflow-hidden scrollbar-hide">
@@ -123,46 +129,48 @@ export default function Home({ data }) {
             <div className="lg:px-44 text-xs text-white text-center mt-10 lg:mt-16 leading-8 lg:leading-10">
               <p>{data.description}</p>
             </div>
-            <div className="flex items-center justify-center mt-16">
-              {/* <div className="h-16 hover:bg-white/5 border border-white/20 rounded-lg flex items-center px-2 transition-all cursor-pointer">
-                <div className="h-12 w-12 relative">
-                  <img
-                    src="/calendarIcon.png"
-                    className="absolute inset-0"
-                    alt=""
-                  />
-                  <div className="absolute inset-0 flex items-center justify-center font-bold text-slate-800">
-                    12
+            <div className="flex items-center justify-center space-x-4 mt-10 lg:mt-16">
+              {data.socialMedias.map((item) => {
+                return (
+                  <a
+                    key={item.name}
+                    href={item.link}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <img
+                      src={item.icon.url}
+                      alt=""
+                      className="h-8 w-8 cursor-pointer"
+                    />
+                  </a>
+                );
+              })}
+            </div>
+            {currEvent && (
+              <div onClick={handleRegisterClick} className="flex items-center justify-center mt-4 cursor-pointer">
+                <div className="h-16 hover:bg-white/5 border border-white/20 rounded-lg flex items-center px-2 transition-all z-30">
+                  <div className="h-12 w-12 relative">
+                    <img
+                      src="/calendarIcon.png"
+                      className="absolute inset-0"
+                      alt=""
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center font-bold text-slate-800">
+                      {currEvent.date.split("-")[2]}
+                    </div>
+                  </div>
+                  <div className="ml-4 mr-4">
+                    <h1 className="text-white font-semibold text-sm">
+                      {currEvent.name}
+                    </h1>
+                    <span className="text-[10px] text-white">
+                      {currEvent.date}
+                    </span>
                   </div>
                 </div>
-                <div className="ml-4 mr-4">
-                  <h1 className="text-white font-semibold text-sm">
-                    Happening now event name
-                  </h1>
-                  <span className="text-[10px] text-white">
-                    12:00 PM - 1:00 PM
-                  </span>
-                </div>
-              </div> */}
-              <div className="flex items-center space-x-4">
-                {data.socialMedias.map((item) => {
-                  return (
-                    <a
-                      key={item.name}
-                      href={item.link}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <img
-                        src={item.icon.url}
-                        alt=""
-                        className="h-8 w-8 cursor-pointer"
-                      />
-                    </a>
-                  );
-                })}
               </div>
-            </div>
+            )}
           </div>
           <div className="mt-56">
             <h1 className="text-center text-white text-xl lg:text-3xl font-bold lg:font-extrabold leading-[1.6]">
@@ -238,3 +246,5 @@ export default function Home({ data }) {
     </div>
   );
 }
+
+export default Home;

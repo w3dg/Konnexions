@@ -78,10 +78,7 @@ export default function Resources({ data }) {
           const circle = '<svg x="0px" y="0px" viewBox="0 0 13 12"> <path class="circle" d="M6.5,0.1C3.4,0.1,0.8,2.8,0.8,6s2.6,5.9,5.7,5.9s5.7-2.7,5.7-5.9S9.7,0.1,6.5,0.1L6.5,0.1z M6.5,8.8 C5,8.8,3.8,7.6,3.8,6S5,3.2,6.5,3.2S9.2,4.4,9.2,6S8,8.8,6.5,8.8L6.5,8.8z"/> </svg>';
           const point = '<svg viewBox="0 0 12 12"> <path class="point" d="M6,7.5L6,7.5C5.1,7.5,4.5,6.9,4.5,6v0c0-0.9,0.7-1.5,1.5-1.5h0c0.9,0,1.5,0.7,1.5,1.5v0C7.5,6.9,6.9,7.5,6,7.5z "/> </svg>';
           
-          function randomInt(min, max) {
-            return Math.floor(Math.random() * (max - min + 1) + min);
-          }
-      
+          const randomInt = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
           const data = [point, rhombus, pentahedron, circle, x];
           let isPaused = false;
           window.onblur = function () {
@@ -100,17 +97,16 @@ export default function Resources({ data }) {
               "y": $(window).height() },
               1 + Math.random() * 3));
             }
-          }, 200);
+          }, 1500);
           
           function update() {
-            particles = particles.filter(function (p) {
-              return p.move();
-            });
+            particles = particles.filter(p => p.move());
             requestAnimationFrame(update.bind(this));
           }
           update();
         }}
       />
+
       <div id="shapeCanvas"></div>
       <div className="h-full w-full relative overflow-y-auto overflow-x-hidden mb-44 pb-44 scrollbar-hide">
         <div className="absolute z-10 h-fit w-full pt-32 pb-28 lg:pt-44 px-6 lg:px-24">
