@@ -18,7 +18,6 @@ export default function NavBar() {
     }
     fetchData();
   }, [data]);
-
   if (!data) return null;
 
   const tabs = [
@@ -48,11 +47,8 @@ export default function NavBar() {
           </li> )}
         )}
       </ul>
-      <div>
-        <button
-          onClick={() => setSidenavOpen(!sidenavOpen)}
-          className="block lg:hidden text-white"
-        >
+      <div  onClick={() => setSidenavOpen(!sidenavOpen)} className="lg:hidden flex items-center">
+        <button className="block lg:hidden text-white">
           <div className="w-6 flex items-center justify-center relative">
             <span
               className={`transform transition w-full h-px bg-current absolute ${
@@ -81,8 +77,7 @@ export default function NavBar() {
             <li key={tab.name} className="text-white/70 hover:text-white text-2xl transition-all" onClick={() => setSidenavOpen(false)}>
               <Link href={tab.link}>{tab.name}</Link>
             </li> )}
-          )}
-          </ul>
+          )}</ul>
         </div>
       </div>
     )}
