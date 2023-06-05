@@ -6,7 +6,7 @@ export default function Document() {
       <Head>
         <meta charSet="utf-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-        <link rel="icon" href="/logos/grplogo.png" type="image/png" />
+        <link rel="icon" href="/logos/icon.svg" type="image/png" />
 
         <meta name="description" content="Konnexions is the official IT & Web Development society of KIIT that focuses on improving the skills of the students to provide them the most beautiful career and life." />
         <meta name="keywords" content="Konnexions, KIIT, KIIT University, KIIT Bhubaneswar, KIIT Bhubaneswar Society, KIIT Society, KIIT IT Society, KIIT Web Development Society, KIIT IT Club, KIIT Web Development Club, KIIT IT, KIIT Web Development, KIIT IT Society, KIIT Web Development Society, KIIT IT Club, KIIT Web Development Club, KIIT IT, KIIT Web Development, KIIT IT Society, KIIT Web Development Society, KIIT IT Club, KIIT Web Development Club, KIIT IT, KIIT Web Development, KIIT IT Society, KIIT Web Development Society, KIIT IT Club, KIIT Web Development Club, KIIT IT, KIIT Web Development, KIIT IT Society, KIIT Web Development Society, KIIT IT Club, KIIT Web Development Club, KIIT IT, KIIT Web Development, KIIT IT Society, KIIT Web Development Society, KIIT IT Club, KIIT Web Development Club, KIIT IT, KIIT Web Development, KIIT IT Society, KIIT Web Development Society, KIIT IT Club, KIIT Web Development Club, KIIT IT, KIIT Web Development" />

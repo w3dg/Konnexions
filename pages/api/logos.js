@@ -12,9 +12,6 @@ const handler = async(req, res) => {
         kiit {
           url
         }
-        ksac {
-          url
-        }
       }
     }
   `;

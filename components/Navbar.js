@@ -36,9 +36,6 @@ export default function NavBar() {
         <Link href="/" className="w-full max-w-[100px] max-h-[100px] overflow-hidden">
           <img src={data.konnexion.url} alt="konnexions" className="w-full h-auto" />
         </Link>
-        <Link href="https://ksac.kiit.ac.in/" target="_blank" className="w-full max-w-[100px] max-h-[100px] overflow-hidden">
-          <img src={data.ksac.url} alt="ksac" className="w-full h-auto" />
-        </Link>
       </div>
       <ul className="hidden lg:flex items-center space-x-16 ml-auto">
         {tabs.map(tab => { return (
