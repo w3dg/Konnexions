@@ -21,7 +21,7 @@ export async function getServerSideProps() {
 
 export default function Resources({ data }) {
   return (
-    <div className="fixed inset-0 h-screen w-screen overflow-hidden bg-black">
+    <div className="fixed inset-0 h-screen w-screen overflow-hidden bg-[#02001A]">
       <Head><title>Konnexions - Resources</title></Head>
       <div className="h-full w-full relative overflow-y-auto overflow-x-hidden mb-44 pb-44 scrollbar-hide">
         <img

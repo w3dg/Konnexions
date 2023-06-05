@@ -32,7 +32,8 @@ const Teams = ({ data }) => {
       window.setTimeout(callback, 1000 / 60);
       };
     }();
-    var canvas = document.getElementById('canvas'),ctx = canvas.getContext('2d'),w = canvas.width = window.innerWidth,h = canvas.height = window.innerHeight,hue = 217,stars = [],count = 0,maxStars = 200;
+
+    var canvas = document.getElementById('teamCanvas'),ctx = canvas.getContext('2d'),w = canvas.width = window.innerWidth,h = canvas.height = window.innerHeight,hue = 217,stars = [],count = 0,maxStars = 200;
     var canvas2 = document.createElement('canvas'),ctx2 = canvas2.getContext('2d');
     canvas2.width = 100;
     canvas2.height = 100;
@@ -68,7 +69,7 @@ const Teams = ({ data }) => {
       this.orbitX = w / 2;
       this.orbitY = h / 2;
       this.timePassed = random(0, maxStars);
-      this.speed = random(this.orbitRadius) / 900000;
+      this.speed = random(this.orbitRadius) / 450000;
       this.alpha = random(2, 10) / 10;
       count++;
       stars[count] = this;
@@ -84,9 +85,8 @@ const Teams = ({ data }) => {
       ctx.drawImage(canvas2, x - this.radius / 2, y - this.radius / 2, this.radius, this.radius);
       this.timePassed += this.speed;
     };
-    for (var i = 0; i < maxStars; i++) {
-      new Star();
-    }
+    for (var i = 0; i < maxStars; i++) new Star();
+
     function animation() {
       ctx.globalCompositeOperation = 'source-over';
       ctx.globalAlpha = 0.8;
@@ -104,11 +104,11 @@ const Teams = ({ data }) => {
   fn();
 
   return (    
-    <div className="fixed inset-0 h-screen w-screen overflow-hidden bg-black">
+    <div className="fixed inset-0 h-screen w-screen overflow-hidden bg-[#02001A]">
       <Head>
         <title>Konnexions - Team</title>
       </Head>
-      <canvas id="canvas" className="absolute inset-0 h-full w-full z-0 opacity-90"></canvas>
+      <canvas id="teamCanvas" className="absolute inset-0 h-full w-full z-0 opacity-90"></canvas>
       <div className="h-full w-full relative overflow-y-auto overflow-x-hidden mb-44 pb-44 scrollbar-hide">
         <div className="absolute z-10 h-fit w-full pt-32 pb-28 lg:pt-44 px-6 lg:px-24">
           <h1 className="text-center text-white text-2xl lg:text-5xl font-bold lg:font-extrabold leading-[1.6]">

@@ -50,7 +50,7 @@ export default function Home({ data }) {
     if (!formSubmit) return;
     const resp = await axios.post(
       process.env.NODE_ENV == "production"
-        ? "https://konnexions.herokuapp.com/api/newsletter"
+        ? "https://konnexions.netlify.app/api/newsletter"
         : "http://localhost:3000/api/newsletter",
       subDetails
     );
@@ -68,7 +68,7 @@ export default function Home({ data }) {
   };
 
   return (
-    <div className="h-screen w-screen fixed inset-0 bg-black overflow-hidden scrollbar-hide">
+    <div className="h-screen w-screen fixed inset-0 bg-[#02001A] overflow-hidden scrollbar-hide">
       <Head>
         <title>Konnexions</title>
       </Head>

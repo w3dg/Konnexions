@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from "react";
 import Head from "next/head";
+import Script from "next/script";
 import axios from "axios";
 
 function Contact() {
@@ -41,7 +42,7 @@ function Contact() {
     if (!formSubmit) return;
     const resp = await axios.post(
       process.env.NODE_ENV == "production"
-        ? "https://konnexions.herokuapp.com/api/contact"
+        ? "https://konnexions.netlify.app/api/contact"
         : "http://localhost:3000/api/contact",
       contactDetails
     );
@@ -68,15 +69,22 @@ function Contact() {
   return (
     <>
       <Head><title>Konnexions - Contact</title></Head>
-      <div className="fixed inset-0 h-screen w-screen bg-black overflow-x-hidden">
+      <div className="fixed inset-0 h-screen w-screen bg-[#02001A] overflow-x-hidden">
         <div className="relative inset-0 h-screen w-screen overflow-x-hidden">
-          <div className="h-[800px] lg:h-[1000px] w-[800px] lg:w-[1000px] absolute z-10 rounded-full bg-gradient-to-br from-[#6C63FF]/60 lg:from-[#6C63FF] to-transparent -translate-x-1/2 -translate-y-1/2 blur-xl lg:blur-3xl"></div>
+          <canvas id="contactCanvas" className="absolute inset-0 h-full w-full z-0 opacity-90"></canvas>
+          <Script src="https://npmcdn.com/particlesjs@2.0.2/dist/particles.min.js"
+            onReady={() => {
+              Particles.init({
+                selector: '#contactCanvas',
+                connectParticles: true,
+                color: '#98D2EB',
+                minDistance: '100',
+                sizeVariations: 2,
+                maxParticles: 50,
+              });
+            }}
+          />
           <div className="absolute py-32 inset-0 h-screen w-screen z-30 overflow-y-auto overflow-x-hidden scrollbar-hide">
-            <img
-              src="./images/mail.png"
-              alt="mail"
-              className="absolute w-[212px] md:w-[412px] top-[-10%] left-0 "
-            />
             <div>
               <h1 className="text-white font-bold text-[1.5rem] md:text-[2.5rem] lg:text-[3rem] text-center max-w-[1440px] m-auto">
                 Don&apos;t Be Shy, Let&apos;s Connect!
@@ -96,11 +104,11 @@ function Contact() {
                     scrolling="no"
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2630.269281427254!2d85.82064982337539!3d20.35791870849655!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a19093cc3e1974b%3A0x85a345e1f4fcce86!2sKIIT%20Student%20Activity%20Center%20-%20KSAC!5e0!3m2!1sen!2sin!4v1685780284805!5m2!1sen!2sin"
                     style={{ filter: "grayscale(100%) invert(92%) contrast(83%)" }}
-                    allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"
-                    className="rounded-lg"
+                    allowFullScreen="" referrerPolicy="no-referrer-when-downgrade"
+                    className="rounded-lg bg-current" allowtransparency="true"
                   ></iframe>
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-br from-indigo-800/40 to-slate-950/70 rounded-lg lg:pointer-events-none" onClick={ openMap }></div>
+                <div className="absolute inset-0 bg-[#02001A]/40 rounded-lg lg:pointer-events-none" onClick={ openMap }></div>
                 <div className="flex container mx-auto px-5 py-5 pt-24">
                   <div className="lg:w-1/3 md:w-1/2 bg-transparent backdrop-blur-md rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0 relative sm:z-10 -z-1 opacity-90 lg:opacity-100 border">
                     <form onSubmit={handleSubmit}>
@@ -157,7 +165,7 @@ function Contact() {
                         <div className="text-red-700">{gmailError}</div>
                         <button
                           disabled={!formSubmit}
-                          className="text-sm py-2 px-8 rounded-md mt-4 cursor-pointer transition duration bg-zinc-600/50 text-white hover:bg-indigo-600/50"
+                          className="text-sm py-2 px-8 rounded-md mt-4 cursor-pointer transition duration bg-zinc-600/50 text-white hover:bg-[#98D2EB]/60"
                         >
                           Submit
                         </button>
