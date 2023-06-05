@@ -41,7 +41,7 @@ export default function NavBar() {
           <img src={data.ksac.url} alt="ksac" className="w-full h-auto" />
         </Link>
       </div>
-      <ul className="hidden md:flex items-center space-x-16 ml-auto">
+      <ul className="hidden lg:flex items-center space-x-16 ml-auto">
         {tabs.map(tab => { return (
           <li key={tab.name} className="text-white/70 hover:text-white text-sm transition-all">
             <Link href={tab.link}>{tab.name}</Link>
@@ -50,63 +50,40 @@ export default function NavBar() {
       </ul>
       <div>
         <button
-          onClick={() => setSidenavOpen(true)}
-          className="block md:hidden text-white"
+          onClick={() => setSidenavOpen(!sidenavOpen)}
+          className="block lg:hidden text-white"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="currentColor"
-            className="w-6 h-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-            />
-          </svg>
+          <div className="w-6 flex items-center justify-center relative">
+            <span
+              className={`transform transition w-full h-px bg-current absolute ${
+                sidenavOpen ? 'translate-y-0 rotate-45' : '-translate-y-2'
+              }`}
+            ></span>
+            <span
+              className={`transform transition w-full h-px bg-current absolute ${
+                sidenavOpen ? 'opacity-0 translate-x-3' : 'opacity-100'
+              }`}
+            ></span>
+            <span
+              className={`transform transition w-full h-px bg-current absolute ${
+                sidenavOpen ? 'translate-y-0 -rotate-45' : 'translate-y-2'
+              }`}
+            ></span>
+          </div>
         </button>
       </div>
     </nav>
     {sidenavOpen && (
-      <div className="fixed inset-0 bg-[#02001A]/60 backdrop-blur z-30">
-        <div className="flex items-center justify-between px-6 h-20">
-          <div>
-            <h1 className="text-white font-semibold text-2xl lg:text-3xl">
-              KONNEXIONS
-            </h1>
-          </div>
-          <div>
-            <button
-              onClick={() => setSidenavOpen(false)}
-              className="block md:hidden text-white"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="currentColor"
-                className="w-6 h-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
-        <ul className="px-6 text-center space-y-12 mt-16">
+      <div className="fixed inset-0 bg-[#02001A]/60 backdrop-blur z-20">
+        <div className="flex items-center justify-center h-screen">
+          <ul className="px-6 text-center space-y-12 mt-16">
           {tabs.map(tab => { return (
             <li key={tab.name} className="text-white/70 hover:text-white text-2xl transition-all" onClick={() => setSidenavOpen(false)}>
               <Link href={tab.link}>{tab.name}</Link>
             </li> )}
           )}
-        </ul>
+          </ul>
+        </div>
       </div>
     )}
   </>);

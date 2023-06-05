@@ -37,7 +37,7 @@
 <h4 align="center">For Developers</h4>
 <p>
   <strong>Clone the repository</strong>:
-  <code>git clone https://github.com/54nd339/konnexions.git</code> <br />
+  <code>git clone https://github.com/kiit-konnexions/konnexions.git</code> <br />
   <strong>Install Dependencies</strong>:
   <code>npm install</code> <br />
   <strong>For Development</strong>: 
@@ -52,15 +52,13 @@
 <h4 align="center">ToDos</h4>
 <p>
   <ul>
-    <li> Hamburger to Cross Animation </li>
-    <li> Add Animations to Register Button </li>
     <li> Filters and Search Bar in Resources Tab </li>
     <li> Hover Effects on Cards </li>
-    <li> Parallax Effects (Scroll) in bg of every page </li>
+    <li> Parallax Effects (Scroll) in landing page </li>
     <li> Our Work Tab (Having our Projects/Events and Achievements) </li>
     <li> Testimonials, Gallary in Contact Page </li>
     <li> Blog section in Resources Tab </li>
-    <li> Events Snippet Page </li>
+    <li> Events Page Template </li>
     <li> Login/Signup Modal </li>
     <li> Dashboard Page for members </li>
   </ul>

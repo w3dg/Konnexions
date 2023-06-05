@@ -4,7 +4,7 @@ import { FaLink } from "react-icons/fa";
 
 export default function ResourcesCard({ data }) {
   return (
-    <div className="relative w-[250px] h-[315px] backdrop-blur">
+    <div className="relative w-[250px] h-[315px] backdrop-blur rounded-3xl">
       <img
         src="/servicesRectangle.png"
         alt=""
