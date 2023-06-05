@@ -1,7 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
+
 import React from "react";
 
-export default function EventsCard({ data }) {
+const EventsCard = ({ data }) => {
   const fun = () =>{
     let timeouts = [], intervals = [];
 
@@ -14,7 +15,9 @@ export default function EventsCard({ data }) {
       star.offsetHeight;
       star.style.animation = "";
     }
+  
     const magic = document.querySelector(".magic");
+    if(!magic) return;
     magic.onmouseenter = () => {
       let index = 1;
       for(const star of document.getElementsByClassName("magic-star")) {
@@ -73,3 +76,5 @@ export default function EventsCard({ data }) {
     </div>
   );
 }
+
+export default EventsCard;
