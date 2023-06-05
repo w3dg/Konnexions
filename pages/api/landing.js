@@ -14,6 +14,8 @@ const handler = async(req, res) => {
           link
           icon {
             url
+            height
+            width
           }
         }
         serviceHeading
@@ -22,6 +24,8 @@ const handler = async(req, res) => {
           name
           icon {
             url
+            height
+            width
           }
           description
         }
@@ -31,6 +35,8 @@ const handler = async(req, res) => {
           name
           image {
             url
+            height
+            width
           }
           description
           date

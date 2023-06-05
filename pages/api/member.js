@@ -13,6 +13,8 @@ const handler = async(req, res) => {
           domain
           image {
             url
+            height
+            width
           }
           techLink
           other
@@ -23,6 +25,8 @@ const handler = async(req, res) => {
           domain
           image {
             url
+            height
+            width
           }
           techLink
           other
@@ -33,6 +37,8 @@ const handler = async(req, res) => {
           domain
           image {
             url
+            height
+            width
           }
           techLink
           other

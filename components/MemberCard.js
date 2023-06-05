@@ -3,6 +3,7 @@ import React from "react";
 import { FaGithub, FaEnvelope } from "react-icons/fa";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLink } from '@fortawesome/free-solid-svg-icons'
+import Image from "next/image";
 
 const MemberCard = ({ data }) => {
   return (
@@ -14,7 +15,7 @@ const MemberCard = ({ data }) => {
       />
       <div className="absolute inset-0 top-16 h-full w-[218px] mx-auto">
         <div className="p-2 relative w-full overflow-hidden h-[200px] rounded">
-          <img
+          <Image height={data.image.height} width={data.image.width}
             src={data.image.url}
             alt={data.name}
             className="object-cover w-[95%] mx-auto mt-1 h-auto absolute inset-0  rounded"

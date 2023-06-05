@@ -14,6 +14,8 @@ const handler = async(req, res) => {
           href
           image {
             url
+            height
+            width
           }
         }
       }

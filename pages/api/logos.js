@@ -8,9 +8,13 @@ const handler = async(req, res) => {
       logos {
         konnexion {
           url
+          height
+          width
         }
         kiit {
           url
+          height
+          width
         }
       }
     }

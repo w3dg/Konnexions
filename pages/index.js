@@ -3,6 +3,7 @@ import EventsCard from "@/components/EventsCard";
 import ServicesCard from "@/components/ServicesCard";
 import React, { useEffect, useState } from "react";
 import Head from "next/head";
+import Image from "next/image";
 import axios from "axios";
 
 export async function getServerSideProps() {
@@ -138,7 +139,7 @@ const Home = ({ data }) => {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <img
+                    <Image height={item.icon.height} width={item.icon.width}
                       src={item.icon.url}
                       alt={item.name}
                       className="h-8 w-8 cursor-pointer"
@@ -219,8 +220,7 @@ const Home = ({ data }) => {
                     onChange={(e) =>
                       setSubDetails({ ...subDetails, email: e.target.value })
                     }
-                    type="text"
-                    placeholder="abc@gmail.com"
+                    type="text" placeholder="abc@gmail.com"
                     className="outline-none text-white bg-white/10 py-3 px-3 w-full rounded-md"
                   />
                   <button
