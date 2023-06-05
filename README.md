@@ -52,6 +52,7 @@
 <h4 align="center">ToDos</h4>
 <p>
   <ul>
+    <li> Registration Form </li>
     <li> Filters and Search Bar in Resources Tab </li>
     <li> Hover Effects on Cards </li>
     <li> Parallax Effects (Scroll) in landing page </li>
