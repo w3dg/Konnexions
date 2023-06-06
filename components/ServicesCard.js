@@ -17,7 +17,7 @@ function ServicesCard({ data }) {
         className="absolute inset-0 h-full w-full"
       />
       <div className="absolute text-white inset-0 h-full w-full z-10 flex flex-col items-center justify-center">
-        <Image height={data.icon.height} width={data.icon.width}
+        <Image placeholder="blur" blurDataURL="/spinner.svg" height={data.icon.height} width={data.icon.width}
           src={data.icon.url} className="h-16 w-16 object-contain" alt={data.name}
         />
         <h3 className="mt-7 font-semibold text-sm lg:text-lg">{data.name}</h3>

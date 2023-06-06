@@ -139,10 +139,10 @@ const Home = ({ data }) => {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <Image height={item.icon.height} width={item.icon.width}
+                    <Image placeholder="blur" blurDataURL="/spinner.svg" height={item.icon.height} width={item.icon.width}
                       src={item.icon.url}
                       alt={item.name}
-                      className="h-8 w-8 cursor-pointer"
+                      className="h-8 w-8 cursor-pointer" priority
                     />
                   </a>
                 );
@@ -152,7 +152,7 @@ const Home = ({ data }) => {
               <div onClick={handleRegisterClick} className="flex items-center justify-center mt-4 cursor-pointer">
                 <div className="h-16 hover:bg-white/5 border border-white/20 rounded-lg flex items-center px-2 transition-all z-30">
                   <div className="h-12 w-12 relative">
-                    <img
+                    <Image
                       src="/calendarIcon.png"
                       className="absolute inset-0"
                       alt="calendarIcon"

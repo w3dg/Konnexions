@@ -42,7 +42,7 @@ const EventsCard = ({ data }) => {
   return (
     <div className="w-[370px] md:w-[340px] border border-white/20 rounded-2xl p-5 ml-0">
       <div className="p-2 relative w-full overflow-hidden h-[200px] rounded">
-        <Image height={data.image.height} width={data.image.width}
+        <Image placeholder="blur" blurDataURL="/spinner.svg" height={data.image.height} width={data.image.width}
           src={data.image.url}
           alt={data.name}
           className="object-cover w-[95%] mx-auto mt-1 h-auto absolute inset-0  rounded"
