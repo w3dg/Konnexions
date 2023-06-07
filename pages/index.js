@@ -1,10 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
-import EventsCard from "@/components/EventsCard";
-import ServicesCard from "@/components/ServicesCard";
 import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import axios from "axios";
+import EventsCard from "@/components/EventsCard";
+import ServicesCard from "@/components/ServicesCard";
+import TestimonialCard from "@/components/TestimonialCard";
+import Carousel from "@/components/Carousel";
 
 export async function getServerSideProps() {
   const resp = await axios.get(
@@ -81,34 +83,39 @@ const Home = ({ data }) => {
       </Head>
       <div className="h-full w-full relative overflow-y-auto overflow-x-hidden mb-44 pb-44 scrollbar-hide">
         <img
-          src="/landingGradient_1.png"
+          src="/images/indigo-tl.png"
           alt="landingGradient_1"
           className="absolute top-0 left-0 bg-transparent h-full w-full lg:-translate-x-[10%] lg:h-[1000px] lg:w-[1000px]"
         />
         <img
-          src="/landingGradient_2.png"
+          src="/images/indigo-r.png"
           alt="landingGradient_2"
-          className="absolute top-0 lg:top-0 right-0 bg-transparent h-full w-full lg:h-[1000px] lg:w-[1000px] lg:translate-x-[20%] translate-x-[10%]"
+          className="absolute top-0 right-0 bg-transparent h-full w-full lg:h-[1000px] lg:w-[1000px] lg:translate-x-[30%] translate-x-[10%]"
         />
         <img
-          src="/landingGradient_3.png"
-          alt="landingGradient_3"
-          className="absolute top-[400px] lg:top-[200px] left-0 bg-transparent h-[1700px] w-[1700px] lg:h-[2200px] lg:w-[2200px] lg:-translate-x-[10%] -translate-x-[5%]"
-        />
-        <img
-          src="/landingGradient_4.png"
-          alt="landingGradient_4"
-          className="absolute top-[2200px] lg:top-[1000px] right-0 bg-transparent h-[1700px] w-[1700px] lg:h-[2200px] lg:w-[2200px] lg:translate-x-[10%] translate-x-[5%]"
-        />
-        <img
-          src="/calendar.png"
-          alt="calendar"
-          className="absolute object-contain top-[1000px] lg:top-[900px] left-0 bg-transparent h-[300px] w-[300px] lg:h-[500px] lg:w-[500px] lg:-translate-x-[30%] -translate-x-[30%]"
-        />
-        <img
-          src="/outlineCircleLanding.png"
-          alt="outlineCircleLanding"
+          src="/images/circleOutline.png"
+          alt="circleOutline"
           className="absolute top-24 lg:top-0 -right-6 bg-transparent h-[600px] lg:h-[800px]"
+        />
+        <img
+          src="/images/pink-l.png"
+          alt="landingGradient_3"
+          className="absolute top-[200px] left-0 bg-transparent h-[1500px] w-[1500px] lg:h-[2000px] lg:w-[2000px] lg:-translate-x-[10%] -translate-x-[5%]"
+        />
+        <img
+          src="/images/green-r.png"
+          alt="landingGradient_4"
+          className="absolute top-[1000px] right-0 bg-transparent h-[1700px] w-[1700px] lg:h-[2200px] lg:w-[2200px] lg:translate-x-[10%] translate-x-[5%]"
+        />
+        <img
+          src="/images/pink-l.png"
+          alt="landingGradient_5"
+          className="absolute top-[1800px] left-0 bg-transparent h-[1500px] w-[1500px] lg:h-[2000px] lg:w-[2000px] lg:-translate-x-[10%] -translate-x-[5%]"
+        />
+        <img
+          src="/images/indigo-br.png"
+          alt="landingGradient_7"
+          className="absolute top-[2200px] right-0 bg-transparent h-[1700px] w-[1700px] lg:h-[2200px] lg:w-[2200px] lg:translate-x-[10%] translate-x-[5%] hidden lg:block"
         />
         <div className="absolute z-10 h-fit w-full pt-32 pb-28 lg:pt-44 px-6 lg:px-24">
           <div>
@@ -116,16 +123,14 @@ const Home = ({ data }) => {
               {data.mainHeading}
             </h1>
             <div className="flex items-center space-x-6 justify-center text-white text-sm lg:text-xl mt-7 lg:mt-16">
-              {data.arrayFeat.map((item, index) => {
-                return (
-                  <>
-                    <span>{item}</span>
-                    {index !== data.arrayFeat.length - 1 && (
-                      <span className="text-white/70">•</span>
-                    )}
-                  </>
-                );
-              })}
+              {data.arrayFeat.map((item, index) => (
+                <React.Fragment key={index}>
+                  <span>{item}</span>
+                  {index !== data.arrayFeat.length - 1 && (
+                    <span className="text-white/70">•</span>
+                  )}
+                </React.Fragment>
+              ))}
             </div>
             <div className="lg:px-44 text-xs text-white text-center mt-10 lg:mt-16 leading-8 lg:leading-10">
               <p>{data.description}</p>
@@ -139,7 +144,7 @@ const Home = ({ data }) => {
                     target="_blank"
                     rel="noreferrer"
                   ><Image priority
-                    placeholder="blur" blurDataURL="/spinner.svg"
+                    placeholder="blur" blurDataURL="/images/spinner.svg"
                     height={item.icon.height} width={item.icon.width}
                     src={item.icon.url}
                     alt={item.name}
@@ -153,7 +158,7 @@ const Home = ({ data }) => {
                 <div className="h-16 hover:bg-white/5 border border-white/20 rounded-lg flex items-center px-2 transition-all z-30">
                   <div className="h-12 w-12 relative">
                     <Image
-                      src="/calendarIcon.png"
+                      src="/images/calendarIcon.png"
                       className="absolute inset-0"
                       alt="calendarIcon"
                     />
@@ -182,7 +187,7 @@ const Home = ({ data }) => {
             </p>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3 lg:justify-center place-items-center mt-16">
               {data.services.map((item, i) => {
-                return <ServicesCard data={item} key={i} />;
+                return <ServicesCard data={item} key={`service_${i}`} />;
               })}
             </div>
           </div>
@@ -195,51 +200,31 @@ const Home = ({ data }) => {
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:justify-center place-items-center mt-16">
               {data.events.map((item, i) => {
-                return <EventsCard data={item} key={i} />;
+                return <EventsCard data={item} key={`event_${i}`} />;
               })}
             </div>
           </div>
           <div className="mt-56">
             <h2 className="text-center text-white text-xl lg:text-3xl font-bold lg:font-extrabold leading-[1.6]">
-              {data.newsHeading}
+              {data.testimonialHeading}
             </h2>
             <p className="text-white/70 text-sm text-center mt-3">
-              {data.newsDescription}
+              {data.testimonialDescription}
             </p>
-            <div className="w-full lg:w-[70%] mt-10 h-fit mx-auto bg-[#151515] grid grid-cols-1 lg:grid-cols-2 rounded-lg lg:rounded-2xl">
-              <div className="p-5 lg:p-10">
-                <h3 className="text-lg lg:text-2xl text-white font-semibold">
-                  Signup for the weekly newsletter.
-                </h3>
-                <p className="text-white/70 text-xs leading-6 mt-3">
-                  {data.newsContent}
-                </p>
-                <div className="items-center mt-7">
-                  <input
-                    value={subDetails.email}
-                    onChange={(e) =>
-                      setSubDetails({ ...subDetails, email: e.target.value })
-                    }
-                    type="text" placeholder="abc@gmail.com"
-                    className="outline-none text-white bg-white/10 py-3 px-3 w-full rounded-md"
-                  />
-                  <button
-                    className="text-black bg-white/60 w-full text-center py-3 rounded-md mt-4 text-sm"
-                    onClick={handleSubmit}
-                    disabled={!formSubmit}
-                  >
-                    Submit
-                  </button>
-                </div>
-                <div className="text-red-700">{gmailError}</div>
-                {successMsg && (
-                  <div className="text-green-700"> Subscribed Successfully. </div>
-                )}
-              </div>
-              <div className="flex items-center justify-center w-full">
-                <img src="/mail.png" className="hidden lg:block h-44" alt="mail" />
-              </div>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 lg:justify-center place-items-center mt-16">
+              {data.testimonials.map((item, i) => {
+                return <TestimonialCard data={item} key={`service_${i}`} />;
+              })}
             </div>
+          </div>
+          <div className="mt-56">
+            <h2 className="text-center text-white text-xl lg:text-3xl font-bold lg:font-extrabold leading-[1.6]">
+              {data.galleryHeading}
+            </h2>
+            <p className="text-white/70 text-sm text-center mt-3">
+              {data.galleryDescription}
+            </p>
+            <Carousel images={data.images} />
           </div>
         </div>
       </div>

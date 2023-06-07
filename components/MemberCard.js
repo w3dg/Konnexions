@@ -9,16 +9,16 @@ const MemberCard = ({ data }) => {
   return (
     <div className="relative w-[355px] h-[420px]">
       <img
-        src="/borderFrame.png"
+        src="/images/borderFrame.png"
         className="absolute inset-0 w-full h-full"
         alt="borderFrame"
       />
       <div className="absolute inset-0 top-16 h-full w-[218px] mx-auto">
         <div className="p-2 relative w-full overflow-hidden h-[200px] rounded">
-          <Image placeholder="blur" blurDataURL="/spinner.svg" height={data.image.height} width={data.image.width}
-            src={data.image.url}
-            alt={data.name}
-            className="object-cover w-[95%] mx-auto mt-1 h-auto absolute inset-0  rounded"
+          <Image placeholder="blur" blurDataURL="/images/spinner.svg"
+            height={data.image.height} width={data.image.width}
+            src={data.image.url} alt={data.name}
+            className="object-fit w-auto mx-auto mt-1 h-full absolute inset-0  rounded"
           />
         </div>
         <h3 className="text-lg text-white font-semibold text-center my-4 px-4">

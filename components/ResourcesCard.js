@@ -7,12 +7,12 @@ export default function ResourcesCard({ data }) {
   return (
     <div className="relative w-[250px] h-[315px] backdrop-blur rounded-3xl">
       <img
-        src="/servicesRectangle.png" alt="servicesRectangle"
+        src="/images/servicesRectangle.png" alt="servicesRectangle"
         className="absolute inset-0 h-full w-full"
       />
       <div className="absolute text-white inset-0 h-full w-full z-10 flex flex-col items-center justify-center">
         <div className="p-2 mt-2 relative w-full overflow-hidden h-[200px] rounded">
-          <Image placeholder="blur" blurDataURL="/spinner.svg" height={data.image.height} width={data.image.width}
+          <Image placeholder="blur" blurDataURL="/images/spinner.svg" height={data.image.height} width={data.image.width}
             src={data.image.url} alt={data.name}
             className="object-cover w-[70%] mx-auto mt-auto h-auto absolute inset-0  rounded"
           />

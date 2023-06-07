@@ -4,13 +4,13 @@
 
 <p align="center">
   <a href="https://konnexions.netlify.app">
-    <img src="public/logos/grplogo2.png" alt="Konnexions Logo" width="100" height="100">
+    <img src="public/logos/grplogo.png" alt="Konnexions Logo" width="100" height="100">
   </a>
   <a href="https://kiit.ac.in/">
     <img src="public/logos/kiit-logo-png.png" alt="KIIT Logo" width="100" height="100">
   </a>
   <a href="https://ksac.kiit.ac.in/">
-    <img src="public/logos/KSAC_logo.png" alt="KSAC_logo" width="100" height="100">
+    <img src="public/logos/ksac.png" alt="KSAC_logo" width="100" height="100">
   </a>
 </p>
 
@@ -52,11 +52,11 @@
 <h4 align="center">ToDos</h4>
 <p>
   <ul>
+    <li> Sliding Testimonials in Home Page </li>
     <li> Filters and Search Bar in Resources Tab </li>
     <li> Hover Effects on Cards </li>
     <li> Parallax Effects (Scroll) in landing page </li>
     <li> Our Work Tab (Having our Projects/Events and Achievements) </li>
-    <li> Testimonials, Gallary in Contact Page </li>
     <li> Blog section in Resources Tab </li>
     <li> Events Page Template </li>
     <li> Login/Signup Modal </li>

@@ -1,4 +1,5 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+
 import { client, gql } from "@/graph";
 
 const handler = async(req, res) => {
@@ -42,9 +43,23 @@ const handler = async(req, res) => {
           state
           regLink
         }
-        newsHeading
-        newsDescription
-        newsContent
+        testimonialHeading
+        testimonialDescription
+        testimonials {
+          description
+          name
+        }
+        galleryHeading
+        galleryDescription
+        images {
+          name
+          image {
+            url
+            height
+            width
+          }
+          description
+        }
       }
     }
   `;

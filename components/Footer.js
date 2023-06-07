@@ -32,7 +32,7 @@ const Footer = () => {
             )})}
           </div>
           <div>
-            <p className="text-center md:text-left">
+            <p className="text-center md:text-left hidden md:block">
               © {year} KIIT Konnexions
             </p>
           </div>
