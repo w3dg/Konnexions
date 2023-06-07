@@ -1,10 +1,9 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-
 import { client, gql } from "@/graph";
 
 const handler = async(req, res) => {
   const query = gql`
-    query Logos {
+    query Logo {
       logos {
         konnexion {
           url

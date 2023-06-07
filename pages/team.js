@@ -106,7 +106,7 @@ const Teams = ({ data }) => {
   return (    
     <div className="fixed inset-0 h-screen w-screen overflow-hidden bg-[#02001A]">
       <Head>
-        <title>Konnexions - Team</title>
+        <title>Team | Konnexions</title>
       </Head>
       <canvas id="teamCanvas" className="absolute inset-0 h-full w-full z-0 opacity-90"></canvas>
       <div className="h-full w-full relative overflow-y-auto overflow-x-hidden mb-44 pb-44 scrollbar-hide">

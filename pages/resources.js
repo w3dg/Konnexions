@@ -23,7 +23,7 @@ export async function getServerSideProps() {
 export default function Resources({ data }) {
   return (
     <div className="fixed inset-0 h-screen w-screen overflow-hidden bg-[#02001A]">
-      <Head><title>Konnexions - Resources</title></Head>
+      <Head><title>Resources | Konnexions</title></Head>
       <Script src="https://code.jquery.com/jquery-3.7.0.min.js"
         integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
         crossorigin="anonymous"

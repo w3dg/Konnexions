@@ -27,11 +27,11 @@ const Home = ({ data }) => {
   const [successMsg, setSuccessMsg] = useState(false);
   const [currEvent, setCurrEvent] = useState(null);
 
+  const emailRegex = new RegExp(
+    "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+  );
+
   useEffect(() => {
-    const emailRegex = new RegExp(
-      "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
-    );
-  
     if (subDetails.email.length == 0) {
       setFormSubmit(false);
       return;
@@ -71,13 +71,13 @@ const Home = ({ data }) => {
 
   useEffect(() => {
     setCurrEvent(data.events.filter((event) => event.state == "register")[0]);
-  }, []);
+  }, [data.events]);
   const handleRegisterClick = () => window.open(currEvent.regLink, "_blank");
 
   return (
     <div className="h-screen w-screen fixed inset-0 bg-[#02001A] overflow-hidden scrollbar-hide">
       <Head>
-        <title>Konnexions</title>
+        <title>Konnexions | KIIT </title>
       </Head>
       <div className="h-full w-full relative overflow-y-auto overflow-x-hidden mb-44 pb-44 scrollbar-hide">
         <img
@@ -133,18 +133,18 @@ const Home = ({ data }) => {
             <div className="flex items-center justify-center space-x-4 mt-10 lg:mt-16">
               {data.socialMedias.map((item) => {
                 return (
-                  <a
+                  <a aria-label={item.name}
                     key={item.name}
                     href={item.link}
                     target="_blank"
                     rel="noreferrer"
-                  >
-                    <Image placeholder="blur" blurDataURL="/spinner.svg" height={item.icon.height} width={item.icon.width}
-                      src={item.icon.url}
-                      alt={item.name}
-                      className="h-8 w-8 cursor-pointer" priority
-                    />
-                  </a>
+                  ><Image priority
+                    placeholder="blur" blurDataURL="/spinner.svg"
+                    height={item.icon.height} width={item.icon.width}
+                    src={item.icon.url}
+                    alt={item.name}
+                    className="h-8 w-8 cursor-pointer"
+                  /></a>
                 );
               })}
             </div>
@@ -180,7 +180,7 @@ const Home = ({ data }) => {
             <p className="text-white/70 text-sm text-center mt-3">
               {data.serviceDescription}
             </p>
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 lg:justify-center place-items-center mt-16">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 lg:justify-center place-items-center mt-16">
               {data.services.map((item, i) => {
                 return <ServicesCard data={item} key={i} />;
               })}

@@ -1,5 +1,4 @@
 import React from "react";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFacebook, faInstagram, faLinkedinIn, faGithub
@@ -26,7 +25,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="flex flex-row space-x-4 my-1">
             {socials.map(social => { return (
-              <a key={social.name} href={social.link} target="_blank" rel="noreferrer">
+              <a key={social.name} href={social.link} target="_blank" rel="noreferrer" aria-label={`${social.name} Link`}>
                 <FontAwesomeIcon icon={social.icon} 
                   className={`h-6 w-6 ${social.hovcolor}`} />
               </a>

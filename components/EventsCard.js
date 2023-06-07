@@ -50,7 +50,7 @@ const EventsCard = ({ data }) => {
       </div>
       <h3 className="mt-6 text-lg text-white">{data.name}</h3>
       <p className="text-white/40 text-xs leading-7 mt-1">
-        {data.description.substring(0, 150) + "..."}
+        {data.description.substring(0, 200) + "..."}
       </p>
       <div className="flex items-center justify-between mt-3">
         {data.state == "register" && (

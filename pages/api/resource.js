@@ -1,9 +1,10 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+
 import { client, gql } from "@/graph";
 
 const handler = async(req, res) => {
   const query = gql`
-    query Resources {
+    query ResourcePage {
       resourcePages {
         heading
         description
@@ -21,7 +22,9 @@ const handler = async(req, res) => {
       }
     }
   `;
-  await client.request(query).then((data) => {
+
+  await client.request(query)
+  .then((data) => {
     console.log(data);
     res.status(200).json({
       data: data.resourcePages[0],

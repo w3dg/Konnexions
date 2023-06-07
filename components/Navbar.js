@@ -33,7 +33,7 @@ export default function NavBar({ data }) {
         )}
       </ul>
       <div onClick={() => setSidenavOpen(!sidenavOpen)} className="lg:hidden flex items-center ml-auto">
-        <button className="block lg:hidden text-white">
+        <button className="block lg:hidden text-white" aria-label="Toggle sidenav">
           <div className="w-6 flex items-center justify-center relative">
             <span
               className={`transform transition w-full h-px bg-current absolute ${
