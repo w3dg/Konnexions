@@ -28,7 +28,7 @@ function Contact() {
       return;
     } else setFormSubmit(true);
     setGmailError("");
-  }, [contactDetails]);
+  }, [contactDetails, emailRegex]);
 
   const handleChange = (e) => {
     setContactDetails({
@@ -70,7 +70,7 @@ function Contact() {
     <div className="fixed inset-0 h-screen w-screen bg-[#02001A] overflow-x-hidden">
       <div className="relative inset-0 h-screen w-screen overflow-x-hidden">
         <Connect />
-        <div className="absolute pt-32 pb-8 md:pb-16 inset-0 h-screen w-screen z-30 overflow-y-auto overflow-x-hidden scrollbar-hide">
+        <div className="absolute pt-32 pb-16 inset-0 h-screen w-screen z-30 overflow-y-auto overflow-x-hidden scrollbar-hide">
           <div>
             <h1 className="text-white font-bold text-[1.5rem] md:text-[2.5rem] lg:text-[3rem] text-center max-w-[1440px] m-auto">
               Don&apos;t Be Shy, Let&apos;s Connect!

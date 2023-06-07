@@ -24,22 +24,22 @@ export async function getServerSideProps() {
 }
 
 export default function Register({ data }) {
-	let sections = {};
-	let defaultValues = {};
+	let sections = {}, defaultValues = {};
 	let minSection = 100, maxSection = 0;
-	for (const key in data) {
-		if (data[key].section) {
-			const section = data[key].section;
-			if (section < minSection) minSection = section;
-			if (section > maxSection) maxSection = section;
-			if (!sections[section]) sections[section] = [];
-			sections[section].push(key);
-			defaultValues[key] = "";
-		}
+
+	for (const key in data.form) {
+		const section = data.form[key].section;
+		if (section < minSection) minSection = section;
+		if (section > maxSection) maxSection = section;
+		if (!sections[section]) sections[section] = [];
+		sections[section].push(key);
+		defaultValues[key] = "";
 	}
 	const emailRegex = new RegExp(
 		"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
 	);
+	// Change options here
+	const options = ['WebDev', 'AppDev', 'UI/UX', 'Graphic', 'Video Editing', 'Content', 'Marketing', 'RnD']
 
 	const [form, setForm] = useState(defaultValues);
 	const [section, setSection] = useState(minSection);
@@ -53,19 +53,19 @@ export default function Register({ data }) {
 				setErrormsg("Please fill all the fields");
 				return false;
 			}
-			if (data[key].inputType == "email" && !emailRegex.test(form[key])) {
+			if (data.form[key].inputType == "email" && !emailRegex.test(form[key])) {
 				setErrormsg("Please enter a valid email");
 				return false;
 			}
 		}
 		setErrormsg("");
-		console.log(form);
 		return true;
 	}
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		if (checkInputs() == false) return; 
+		console.log(form);
 		setIsLoading(true);
 		const resp = await axios.post(
 			process.env.NODE_ENV == "production"
@@ -80,9 +80,7 @@ export default function Register({ data }) {
 			setTimeout(() => {
 				window.location.href = "/";
 			}, 3000);
-		} else {
-			alert("Something went wrong");
-		}
+		} else alert("Something went wrong");
 		setIsLoading(false);
 	};
 	const handlePrevClick = (e) => {
@@ -103,7 +101,7 @@ export default function Register({ data }) {
 			const input = document.getElementsByName(key)[0];
 			if(input) input.value = form[key];
 		}
-	}, [section]);
+	}, [section, form, sections]);
 
 	return (<>
 		<Head><title>Register | Konnexions</title></Head>
@@ -144,7 +142,7 @@ export default function Register({ data }) {
 							</div>
 						</div>
 					</div>
-					<div className="w-full text-white min-h-screen h-fit lg:h-full overflow-auto scrollbar-hide pb-32 py-6 lg:py-32 px-5 lg:px-8 mt-5 lg:mt-0">
+					<div className="w-full text-white min-h-screen h-fit lg:h-full overflow-auto scrollbar-hide pb-8 py-6 lg:py-32 px-5 lg:px-8 mt-5 lg:mt-0">
 						<div className="flex uppercase justify-between">
 							<span className="text-xs tracking-widest">{data.title}</span>
 							<span className="text-xs tracking-widest">STEP {section - minSection + 1} OF {maxSection - minSection + 1}</span>
@@ -155,15 +153,47 @@ export default function Register({ data }) {
 									{sections[section].map((item, index) => (
 										<div key={index} className="mt-7 lg:h-20 flex flex-col lg:flex-row lg:items-center justify-between p-4 lg:p-3 rounded-md lg:space-x-4">
 											<span className="text-white font-medium shrink-0 lg:ml-4 lg:w-[20%]">
-												{data[item].queryText}
+												{data.form[item].queryText}
 											</span>
-											<input
-												type={data[item].inputType}
-												name={item}
-												value={form.item}
+											{data.form[item].inputType == "textarea" ?
+											<textarea name={item} value={form.item}
+												onChange={(e) => setForm({ ...form, [item]: e.target.value })}
+												className="lg:w-[70%] h-50 lg:h-full bg-[#02001A]/60 border-2 border-slate-200/60 rounded-xl flex items-center px-6 mt-2 lg:mt-0 outline-none"
+												style={{ resize: "none" }}
+											/> : data.form[item].inputType == "dropdown" ?
+											<select name={item} value={form.item}
 												onChange={(e) => setForm({ ...form, [item]: e.target.value })}
 												className="lg:w-[70%] h-12 lg:h-full bg-[#02001A]/60 border-2 border-slate-200/60 rounded-xl flex items-center px-6 mt-2 lg:mt-0 outline-none"
-											/>
+											>
+												{options.map((option, index) => (
+													<option key={`option ${index}`} value={option}>{option}</option>
+												))}
+											</select> : data.form[item].inputType == "radio" ?
+											<div className="flex items-center space-x-4">
+												{options.map((option, index) => (
+													<div key={`option ${index}`} className="flex items-center space-x-2">
+														<input type="radio" name={item} value={option} onChange={(e) => setForm({ ...form, [item]: e.target.value })} />
+														<span className="text-white">{option}</span>
+													</div>
+												))}
+											</div> : data.form[item].inputType == "checkbox" ?
+											<div className="flex items-center space-x-4">
+												{options.map((option, index) => (
+													<div key={`option ${index}`} className="flex items-center space-x-2">	
+														<input type="checkbox" name={item} value={option} onChange={(e) => setForm({ ...form, [item]: e.target.value })} />
+														<span className="text-white">{option}</span>
+													</div>
+												))}
+											</div> : data.form[item].inputType == "file" ?
+											<div className="flex items-center space-x-2">
+												<input type="file" name={item} onChange={(e) => setForm({ ...form, [item]: e.target.value })} />
+												<span className="text-white">{form[item]}</span>
+											</div> :
+											<input type={data.form[item].inputType}
+												name={item} value={form.item}
+												onChange={(e) => setForm({ ...form, [item]: e.target.value })}
+												className="lg:w-[70%] h-12 lg:h-full bg-[#02001A]/60 border-2 border-slate-200/60 rounded-xl flex items-center px-6 mt-2 lg:mt-0 outline-none"
+											/>}
 										</div>
 									))}
 								</div>

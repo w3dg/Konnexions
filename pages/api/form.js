@@ -1,68 +1,60 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+// about, branch, domain, mail, name, resume, roll, year
 import { client, gql } from "@/graph";
 
-const handler = async(req, res) => {
+export default async function handler(req, res) {
   const query = gql`
     query Form {
-      forms {
-				title
-				description
+      formPages {
 				date
+				description
 				location
+				note
+				title
 				image {
+					width
 					url
 					height
-					width
 				}
-				note
-				about {
-					inputType
-					queryText
-					section
-				}
-				branch {
-					inputType
-					queryText
-					section
-				}
-				domain {
-					inputType
-					queryText
-					section
-				}
-				mail {
-					inputType
-					queryText
-					section
-				}
-				name {
-					queryText
-					section
-					inputType
-				}
-				resume {
-					inputType
-					queryText
-					section
-				}
-				roll {
-					inputType
-					queryText
-					section
-				}
-				year {
-					section
-					queryText
-					inputType
+				form {
+					name {
+						inputType
+						queryText
+						section
+					}
+					email {
+						inputType
+						queryText
+						section
+					}
+					domain {
+						inputType
+						queryText
+						section
+					}
+					imageUrl {
+						inputType
+						queryText
+						section
+					}
+					techLink {
+						inputType
+						queryText
+						section
+					}
+					other {
+						inputType
+						queryText
+						section
+					}
 				}
 			}
     }
   `;
-
   await client.request(query).then((data) => {
     console.log(data);
     res.status(200).json({
-      data: data.forms[0],
+      data: data.formPages[0],
     });
   }).catch((err) => {
     console.log(err);
@@ -71,5 +63,3 @@ const handler = async(req, res) => {
     });
   });
 }
-
-export default handler;

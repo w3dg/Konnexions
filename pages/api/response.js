@@ -1,26 +1,25 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+
 import { client, gql } from "@/graph";
 
 export default async function handler(req, res) {
+	// Change CreateMember to CreateResponse
 	const query = gql`
 		mutation {
-			createResponse(
+			createMember(
 				data: {
-					about: "${req.body.about}",
-					branch: "${req.body.branch}",
 					domain: "${req.body.domain}",
-					mail: "${req.body.mail}",
+					email: "${req.body.email}",
+					imageUrl: "${req.body.imageUrl}",
 					name: "${req.body.name}",
-					resume: "${req.body.resume}",
-					roll: "${req.body.roll}",
-					year: "${req.body.year}"
+					other: "${req.body.other}",
+					techLink: "${req.body.techLink}"
 				}
 			){
 				id
 			}
 		}
 	`;
-
 	await client.request(query).then((details) => {
 		console.log(details);
 		res.status(200).json({ message: "success" });

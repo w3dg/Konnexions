@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+
 import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
@@ -23,53 +24,7 @@ export async function getServerSideProps() {
 }
 
 const Home = ({ data }) => {
-  const [gmailError, setGmailError] = useState("");
-  const [formSubmit, setFormSubmit] = useState(false);
-  const [subDetails, setSubDetails] = useState({ email: "" });
-  const [successMsg, setSuccessMsg] = useState(false);
   const [currEvent, setCurrEvent] = useState(null);
-
-  const emailRegex = new RegExp(
-    "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
-  );
-
-  useEffect(() => {
-    if (subDetails.email.length == 0) {
-      setFormSubmit(false);
-      return;
-    } else if (!emailRegex.test(subDetails.email)) {
-      setGmailError("Enter a valid email address");
-      setFormSubmit(false);
-      return;
-    } else setFormSubmit(true);
-    setGmailError("");
-  }, [subDetails]);
-
-  const handleChange = (e) => {
-    setSubDetails({ ...subDetails, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!formSubmit) return;
-    const resp = await axios.post(
-      process.env.NODE_ENV == "production"
-        ? "https://konnexions.netlify.app/api/newsletter"
-        : "http://localhost:3000/api/newsletter",
-      subDetails
-    );
-
-    if (resp.status == 200) {
-      setSubDetails({ email: "" });
-      setFormSubmit(false);
-      setSuccessMsg(true);
-      setTimeout(() => {
-        setSuccessMsg(false);
-      }, 6000);
-    } else {
-      alert("Something went wrong");
-    }
-  };
 
   useEffect(() => {
     setCurrEvent(data.events.filter((event) => event.state == "register")[0]);

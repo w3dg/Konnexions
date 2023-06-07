@@ -22,7 +22,7 @@ export default function Carousel({ images }) {
       handleNextSlide();
     }, 5000);
     return () => clearInterval(interval);
-  }, [currentSlide]);
+  }, [currentSlide, handleNextSlide]);
 
   return (
     <div className="relative w-full lg:w-[70%] mt-10 h-fit mx-auto rounded-lg lg:rounded-2xl">
