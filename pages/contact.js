@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import Head from "next/head";
 import axios from "axios";
 import Connect from "@/components/Connect";
@@ -12,7 +12,9 @@ function Contact() {
     email: "",
     message: "",
   });
-  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  const emailRegex = useMemo(() => {
+    return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  }, []);
 
   useEffect(() => {  
     if (
@@ -28,7 +30,7 @@ function Contact() {
       return;
     } else setFormSubmit(true);
     setGmailError("");
-  }, [contactDetails, emailRegex]);
+  }, [contactDetails]);
 
   const handleChange = (e) => {
     setContactDetails({

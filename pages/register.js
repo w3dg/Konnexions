@@ -3,6 +3,7 @@ import Head from "next/head";
 import Image from "next/image";
 import axios from "axios";
 import Connect from "@/components/Connect";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
 	faCalendarDays, faLocationDot, faArrowRight, faArrowLeft,
@@ -35,9 +36,8 @@ export default function Register({ data }) {
 		sections[section].push(key);
 		defaultValues[key] = "";
 	}
-	const emailRegex = new RegExp(
-		"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
-	);
+	const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
 	// Change options here
 	const options = ['WebDev', 'AppDev', 'UI/UX', 'Graphic', 'Video Editing', 'Content', 'Marketing', 'RnD']
 
@@ -101,7 +101,7 @@ export default function Register({ data }) {
 			const input = document.getElementsByName(key)[0];
 			if(input) input.value = form[key];
 		}
-	}, [section, form, sections]);
+	}, [section, form]);
 
 	return (<>
 		<Head><title>Register | Konnexions</title></Head>
