@@ -8,7 +8,7 @@ const handler = async(req, res) => {
       resourcePages {
         heading
         description
-        resource {
+        resource(first: 500) {
           name
           category
           description
