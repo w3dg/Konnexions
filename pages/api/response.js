@@ -10,7 +10,11 @@ export default async function handler(req, res) {
 				data: {
 					domain: "${req.body.domain}",
 					email: "${req.body.email}",
-					imageUrl: "${req.body.imageUrl}",
+					image: {
+						connect: {
+							id: "${req.body.image}"
+						}
+					},
 					name: "${req.body.name}",
 					other: "${req.body.other}",
 					techLink: "${req.body.techLink}"
@@ -20,6 +24,7 @@ export default async function handler(req, res) {
 			}
 		}
 	`;
+
 	await client.request(query).then((details) => {
 		console.log(details);
 		res.status(200).json({ message: "success" });

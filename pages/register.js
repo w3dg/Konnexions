@@ -27,6 +27,7 @@ export async function getServerSideProps() {
 export default function Register({ data }) {
 	let sections = {}, defaultValues = {};
 	let minSection = 100, maxSection = 0;
+	let fileInputs = [];
 
 	for (const key in data.form) {
 		const section = data.form[key].section;
@@ -34,12 +35,18 @@ export default function Register({ data }) {
 		if (section > maxSection) maxSection = section;
 		if (!sections[section]) sections[section] = [];
 		sections[section].push(key);
-		defaultValues[key] = "";
+
+		if (data.form[key].inputType == "file" ||
+			data.form[key].inputType == "image") {
+			fileInputs.push(key);
+			defaultValues[key] = null;
+		} else
+			defaultValues[key] = "";
 	}
 	const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
 	// Change options here
-	const options = ['WebDev', 'AppDev', 'UI/UX', 'Graphic', 'Video Editing', 'Content', 'Marketing', 'RnD']
+	const options = ['WebDev', 'AppDev', 'UI/UX', 'Graphic', 'Video Editing', 'Content', 'Marketing', 'RnD', 'HR']
 
 	const [form, setForm] = useState(defaultValues);
 	const [section, setSection] = useState(minSection);
@@ -62,11 +69,43 @@ export default function Register({ data }) {
 		return true;
 	}
 
+	// Handle file uploads can be many files
+	const [file, setFile] = useState(null);
+	const handleFileChange = (e) => {
+		setFile(e.target.files[0]);
+		form[fileInputs[0]] = e.target.files[0].name;
+	};
+
+	const handleFileUpload = async () => {
+    if (!file) {
+			setErrormsg("Please select a file.");
+      return;
+    }
+    const formData = new FormData();
+    formData.append('fileUpload', file);
+
+    try {
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_GRAPH_ENDPOINT}/upload`, formData, {
+        headers: {
+          Authorization: `${process.env.NEXT_PUBLIC_GRAPH_TOKEN}`,
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+			form[fileInputs[0]] = response.data.id;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		if (checkInputs() == false) return; 
-		console.log(form);
 		setIsLoading(true);
+
+		if (fileInputs.length > 0) {
+			await handleFileUpload();
+		}
+
 		const resp = await axios.post(
 			process.env.NODE_ENV == "production"
 				? "https://konnexions.netlify.app/api/response"
@@ -83,6 +122,7 @@ export default function Register({ data }) {
 		} else alert("Something went wrong");
 		setIsLoading(false);
 	};
+
 	const handlePrevClick = (e) => {
 		e.preventDefault();
 		setSection(Number(section) - 1);
@@ -99,7 +139,8 @@ export default function Register({ data }) {
 		if (!currentSection) return;
 		for (const key of currentSection) {
 			const input = document.getElementsByName(key)[0];
-			if(input) input.value = form[key];
+			if(input && input.type == "file") continue;
+			else if (input) input.value = form[key];
 		}
 	}, [section, form]);
 
@@ -208,9 +249,9 @@ export default function Register({ data }) {
 														<span className="text-white">{option}</span>
 													</div>
 												))}
-											</div> : data.form[item].inputType == "file" ?
+											</div> : data.form[item].inputType == "file" || data.form[item].inputType == "image" ?
 											<div className="flex items-center space-x-2">
-												<input id={item} type="file" name={item} onChange={(e) => setForm({ ...form, [item]: e.target.value })} />
+												<input id={item} type="file" name={item} onChange={handleFileChange} />
 												<span className="text-white">{form[item]}</span>
 											</div> :
 											<input type={data.form[item].inputType}

@@ -32,7 +32,7 @@ export default async function handler(req, res) {
 						queryText
 						section
 					}
-					imageUrl {
+					image {
 						inputType
 						queryText
 						section
