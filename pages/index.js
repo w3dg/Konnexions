@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-
 import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
@@ -30,6 +29,12 @@ const Home = ({ data }) => {
     setCurrEvent(data.events.filter((event) => event.state == "register")[0]);
   }, [data.events]);
   const handleRegisterClick = () => window.open(currEvent.regLink, "_blank");
+
+  data.events.sort((a, b) => {
+    if (a.date < b.date) return 1;
+    else if (a.date > b.date) return -1;
+    else return 0;
+  });
 
   return (
     <div className="h-screen w-screen fixed inset-0 bg-[#02001A] overflow-hidden scrollbar-hide">

@@ -21,6 +21,16 @@ export async function getServerSideProps() {
 }
 
 export default function Resources({ data }) {
+  data.resource.sort((a, b) => {
+    if (a.category < b.category) return -1;
+    else if (a.category > b.category) return 1;
+    else {
+      if (a.name < b.name) return -1;
+      else if (a.name > b.name) return 1;
+      else return 0;
+    }
+  });
+
   return (
     <div className="fixed inset-0 h-screen w-screen overflow-hidden bg-[#02001A]">
       <Head><title>Resources | Konnexions</title></Head>
