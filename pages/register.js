@@ -152,16 +152,16 @@ export default function Register({ data }) {
 								<div className="bg-slate-900/60 md:rounded-2xl rounded-lg backdrop-blur-sm">
 									{sections[section].map((item, index) => (
 										<div key={index} className="mt-7 lg:h-20 flex flex-col lg:flex-row lg:items-center justify-between p-4 lg:p-3 rounded-md lg:space-x-4">
-											<span className="text-white font-medium shrink-0 lg:ml-4 lg:w-[20%]">
+											<label className="text-white font-medium shrink-0 lg:ml-4 lg:w-[20%]" for={item}>
 												{data.form[item].queryText}
-											</span>
+											</label>
 											{data.form[item].inputType == "textarea" ?
-											<textarea name={item} value={form.item}
+											<textarea name={item} value={form.item} id={item}
 												onChange={(e) => setForm({ ...form, [item]: e.target.value })}
 												className="lg:w-[70%] h-50 lg:h-full bg-[#02001A]/60 border-2 border-slate-200/60 rounded-xl flex items-center px-6 mt-2 lg:mt-0 outline-none"
 												style={{ resize: "none" }}
 											/> : data.form[item].inputType == "dropdown" ?
-											<select name={item} value={form.item}
+											<select name={item} value={form.item} id={item}
 												onChange={(e) => setForm({ ...form, [item]: e.target.value })}
 												className="lg:w-[70%] h-12 lg:h-full bg-[#02001A]/60 border-2 border-slate-200/60 rounded-xl flex items-center px-6 mt-2 lg:mt-0 outline-none"
 											>
@@ -186,11 +186,11 @@ export default function Register({ data }) {
 												))}
 											</div> : data.form[item].inputType == "file" ?
 											<div className="flex items-center space-x-2">
-												<input type="file" name={item} onChange={(e) => setForm({ ...form, [item]: e.target.value })} />
+												<input id={item} type="file" name={item} onChange={(e) => setForm({ ...form, [item]: e.target.value })} />
 												<span className="text-white">{form[item]}</span>
 											</div> :
 											<input type={data.form[item].inputType}
-												name={item} value={form.item}
+												name={item} value={form.item} id={item}
 												onChange={(e) => setForm({ ...form, [item]: e.target.value })}
 												className="lg:w-[70%] h-12 lg:h-full bg-[#02001A]/60 border-2 border-slate-200/60 rounded-xl flex items-center px-6 mt-2 lg:mt-0 outline-none"
 											/>}

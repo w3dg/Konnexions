@@ -13,7 +13,7 @@ const MemberCard = ({ data }) => {
         className="absolute inset-0 w-full h-full"
         alt="borderFrame"
       />
-      <div className="absolute inset-0 top-16 h-full w-[218px] mx-auto">
+      <div className="absolute inset-0 top-16 h-full w-[218px] mx-auto text-center">
         <div className="p-2 relative w-full overflow-hidden h-[200px] rounded">
           <Image placeholder="blur" blurDataURL="/images/spinner.svg"
             height={data.image.height} width={data.image.width}
@@ -21,9 +21,9 @@ const MemberCard = ({ data }) => {
             className="object-fit w-auto mx-auto mt-1 h-full absolute inset-0  rounded"
           />
         </div>
-        <h3 className="text-lg text-white font-semibold text-center my-4 px-4">
+        <span className="text-lg text-white font-semibold text-center inline-block py-4">
           {data.name}
-        </h3>
+        </span>
         <div className="flex flex-row justify-between w-full">
           <div className="h-[1.6px] w-12 my-auto bg-gradient-to-r from-[#ffffff67] to-[transparent]" />
 

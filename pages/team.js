@@ -38,9 +38,9 @@ export default function Teams({ data }) {
           <div className="mt-36">
             <div className="flex items-center justify-center space-x-8 lg:space-x-16">
               <div className="w-56 h-[1px] bg-gradient-to-r from-transparent to-white" />
-              <span className="text-white text-xl font-medium whitespace-nowrap">
+              <h2 className="text-white text-xl font-medium whitespace-nowrap">
                 Faculty-in-Charge
-              </span>
+              </h2>
               <div className="w-56 h-[1px] bg-gradient-to-l from-transparent to-white" />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:justify-center place-items-center mt-16">
@@ -55,9 +55,9 @@ export default function Teams({ data }) {
           <div className="mt-36">
             <div className="flex items-center justify-center space-x-8 lg:space-x-16">
               <div className="w-56 h-[1px] bg-gradient-to-r from-transparent to-white" />
-              <span className="text-white text-xl font-medium whitespace-nowrap">
+              <h2 className="text-white text-xl font-medium whitespace-nowrap">
                 Coordinators
-              </span>
+              </h2>
               <div className="w-56 h-[1px] bg-gradient-to-l from-transparent to-white" />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:justify-center place-items-center mt-16">
@@ -72,9 +72,9 @@ export default function Teams({ data }) {
           <div className="mt-36">
             <div className="flex items-center justify-center space-x-8 lg:space-x-16">
               <div className="w-56 h-[1px] bg-gradient-to-r from-transparent to-white" />
-              <span className="text-white text-xl font-medium whitespace-nowrap">
+              <h2 className="text-white text-xl font-medium whitespace-nowrap">
                 Leads
-              </span>
+              </h2>
               <div className="w-56 h-[1px] bg-gradient-to-l from-transparent to-white" />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:justify-center place-items-center mt-16">
@@ -87,9 +87,9 @@ export default function Teams({ data }) {
           <div className="mt-36">
             <div className="flex items-center justify-center space-x-8 lg:space-x-16">
               <div className="w-56 h-[1px] bg-gradient-to-r from-transparent to-white" />
-              <span className="text-white text-xl font-medium whitespace-nowrap">
+              <h2 className="text-white text-xl font-medium whitespace-nowrap">
                 Our Gems
-              </span>
+              </h2>
               <div className="w-56 h-[1px] bg-gradient-to-l from-transparent to-white" />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:justify-center place-items-center mt-16">

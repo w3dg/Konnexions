@@ -17,7 +17,7 @@ export default function ResourcesCard({ data }) {
             className="object-cover w-[70%] mx-auto mt-auto h-auto absolute inset-0  rounded"
           />
         </div>
-        <h3 className="mt-5 font-semibold text-sm lg:text-lg mx-1 px-1">{data.name}</h3>
+        <span className="inline-block pt-4 pb-2 font-semibold text-sm lg:text-lg mx-1 px-1">{data.name}</span>
         <p className="text-xs lg:text-sm font-light opacity-70 mt-3 px-3">
           {data.description}
         </p>

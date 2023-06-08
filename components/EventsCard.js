@@ -40,7 +40,7 @@ const EventsCard = ({ data }) => {
   const handleRegisterClick = () => window.open(data.regLink, "_blank");
 
   return (
-    <div className="w-[370px] md:w-[340px] border border-white/20 rounded-2xl p-5 backdrop-blur">
+    <div className="w-[370px] md:w-[340px] border border-white/20 rounded-2xl p-5 backdrop-blur text-center">
       <div className="p-2 relative w-full overflow-hidden h-[200px] rounded-lg">
         <Image placeholder="blur" blurDataURL="/images/spinner.svg" height={data.image.height} width={data.image.width}
           src={data.image.url}
@@ -48,7 +48,7 @@ const EventsCard = ({ data }) => {
           className="object-fit h-full mx-auto w-auto absolute inset-0 rounded-lg"
         />
       </div>
-      <h3 className="mt-6 text-lg text-white">{data.name}</h3>
+      <span className="inline-block pt-4 pb-2 text-lg text-white">{data.name}</span>
       <p className="text-white/40 text-xs leading-7 mt-1">
         {data.description.substring(0, 200) + "..."}
       </p>

@@ -13,8 +13,8 @@ function ServicesCard({ data }) {
           src={data.icon.url} alt={data.name}
           className="h-16 w-16 object-contain" 
         />
-        <h3 className="mt-7 font-semibold text-sm lg:text-lg">{data.name}</h3>
-        <p className="text-xs lg:text-sm font-light opacity-70 mt-3 px-3 hidden lg:block">
+        <span className="mt-7 font-semibold text-sm lg:text-lg">{data.name}</span>
+        <p className="text-xs lg:text-sm font-light opacity-70 mt-3 px-3 hidden lg:block text-center">
           {data.description}
         </p>
       </div>
