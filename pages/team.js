@@ -43,7 +43,7 @@ export default function Teams({ data }) {
               </span>
               <div className="w-56 h-[1px] bg-gradient-to-l from-transparent to-white" />
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:justify-center lg:space-x-5 place-items-center mt-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:justify-center place-items-center mt-16">
               {data.others.map((member, i) => {
                 if (member.domain == "Faculty-in-Charge") {
                   return <MemberCard data={member} key={i} />;
@@ -60,7 +60,7 @@ export default function Teams({ data }) {
               </span>
               <div className="w-56 h-[1px] bg-gradient-to-l from-transparent to-white" />
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:justify-center lg:space-x-5 place-items-center mt-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:justify-center place-items-center mt-16">
               {data.others.map((member, i) => {
                 if (member.domain.includes("Coordinator")) {
                   return <MemberCard data={member} key={i} />;
@@ -77,7 +77,7 @@ export default function Teams({ data }) {
               </span>
               <div className="w-56 h-[1px] bg-gradient-to-l from-transparent to-white" />
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:justify-center lg:space-x-5 place-items-center mt-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:justify-center place-items-center mt-16">
               {data.leads.map((member, i) => {
                 return <MemberCard data={member} key={i} />;
               })}
@@ -92,7 +92,7 @@ export default function Teams({ data }) {
               </span>
               <div className="w-56 h-[1px] bg-gradient-to-l from-transparent to-white" />
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:justify-center lg:space-x-5 place-items-center mt-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:justify-center place-items-center mt-16">
               {data.member.map((member, i) => {
                 return <MemberCard data={member} key={i} />;
               })}
