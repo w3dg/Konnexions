@@ -8,7 +8,7 @@ const handler = async(req, res) => {
       memberPages {
         heading
         description
-        member {
+        member(first: 90) {
           name
           email
           domain
