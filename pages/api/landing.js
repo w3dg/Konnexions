@@ -31,7 +31,7 @@ const handler = async(req, res) => {
         }
         eventsHeading
         eventsDescription
-        events {
+        events(last: 10) {
           name
           image {
             url
@@ -45,13 +45,13 @@ const handler = async(req, res) => {
         }
         testimonialHeading
         testimonialDescription
-        testimonials {
+        testimonials(last: 20) {
           description
           name
         }
         galleryHeading
         galleryDescription
-        images {
+        images(last: 10) {
           name
           image {
             url

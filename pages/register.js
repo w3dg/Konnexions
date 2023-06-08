@@ -103,6 +103,28 @@ export default function Register({ data }) {
 		}
 	}, [section, form]);
 
+	// To easily Upload member data from JSON file, (dat.json in Public folder)
+	// Excel sheet from Google Forms can be converted to JSON using Pandas
+	// const uploadData = () => {
+	// 	const getData = async () => {
+	// 		const jSONData = await axios.get('/dat.json')
+	// 		return jSONData.data
+	// 	}
+
+	// 	getData().then((JSONdata) => {
+	// 		JSONdata.forEach((data) => {
+	// 			data.imageUrl = ""
+	// 			const resp = axios.post(
+	// 				process.env.NODE_ENV == "production"
+	// 					? "https://konnexions.netlify.app/api/response"
+	// 					: "http://localhost:3000/api/response",
+	// 				data
+	// 			);
+	// 			console.log(`Data uploaded: ${data.name}`)
+	// 		})
+	// 	})
+	// }
+
 	return (<>
 		<Head><title>Register | Konnexions</title></Head>
     <div className="fixed inset-0 h-screen w-screen bg-[#02001A] overflow-auto lg:overflow-hidden ">
@@ -138,6 +160,8 @@ export default function Register({ data }) {
 											{data.location}
 										</span>
 									</div>
+									{/* Uncomment to upload data from JSON file */}
+									{/* <button onClick={uploadData}>Click Me Daddy</button> */}
 								</div>
 							</div>
 						</div>
