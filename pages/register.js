@@ -44,7 +44,6 @@ export default function Register({ data }) {
 			defaultValues[key] = "";
 	}
 	const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
 	// Change options here
 	const options = ['WebDev', 'AppDev', 'UI/UX', 'Graphic', 'Video Editing', 'Content', 'Marketing', 'RnD', 'HR']
 
@@ -68,7 +67,6 @@ export default function Register({ data }) {
 		setErrormsg("");
 		return true;
 	}
-
 	// Handle file uploads can be many files
 	const [file, setFile] = useState(null);
 	const handleFileChange = (e) => {
@@ -105,7 +103,6 @@ export default function Register({ data }) {
 		if (fileInputs.length > 0) {
 			await handleFileUpload();
 		}
-
 		const resp = await axios.post(
 			process.env.NODE_ENV == "production"
 				? "https://konnexions.netlify.app/api/response"
@@ -144,30 +141,10 @@ export default function Register({ data }) {
 		}
 	}, [section, form]);
 
-	// To easily Upload member data from JSON file, (dat.json in Public folder)
-	// Excel sheet from Google Forms can be converted to JSON using Pandas
-	// const uploadData = () => {
-	// 	const getData = async () => {
-	// 		const jSONData = await axios.get('/dat.json')
-	// 		return jSONData.data
-	// 	}
-
-	// 	getData().then((JSONdata) => {
-	// 		JSONdata.forEach((data) => {
-	// 			data.imageUrl = ""
-	// 			const resp = axios.post(
-	// 				process.env.NODE_ENV == "production"
-	// 					? "https://konnexions.netlify.app/api/response"
-	// 					: "http://localhost:3000/api/response",
-	// 				data
-	// 			);
-	// 			console.log(`Data uploaded: ${data.name}`)
-	// 		})
-	// 	})
-	// }
-
 	return (<>
-		<Head><title>Register | Konnexions</title></Head>
+		<Head>
+			<title>Register | Konnexions</title>
+		</Head>
     <div className="fixed inset-0 h-screen w-screen bg-[#02001A] overflow-auto lg:overflow-hidden ">
       <div className="relative overflow-y-auto overflow-x-hidden scrollbar-hide">
         <Connect />
@@ -201,8 +178,6 @@ export default function Register({ data }) {
 											{data.location}
 										</span>
 									</div>
-									{/* Uncomment to upload data from JSON file */}
-									{/* <button onClick={uploadData}>Click Me Daddy</button> */}
 								</div>
 							</div>
 						</div>

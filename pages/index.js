@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+
 import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
@@ -41,42 +42,11 @@ const Home = ({ data }) => {
       <Head>
         <title>Konnexions | KIIT </title>
       </Head>
+      <div className="absolute inset-0 h-full w-full z-0">
+        <div className="colorst" />
+        <div className="colorsb" />
+      </div>
       <div className="h-full w-full relative overflow-y-auto overflow-x-hidden mb-44 pb-44 scrollbar-hide">
-        <img
-          src="/images/indigo-tl.png"
-          alt="landingGradient_1"
-          className="absolute top-0 left-0 bg-transparent h-full w-full lg:-translate-x-[10%] lg:h-[1000px] lg:w-[1000px]"
-        />
-        <img
-          src="/images/indigo-r.png"
-          alt="landingGradient_2"
-          className="absolute top-0 right-0 bg-transparent h-full w-full lg:h-[1000px] lg:w-[1000px] lg:translate-x-[30%] translate-x-[10%]"
-        />
-        <img
-          src="/images/circleOutline.png"
-          alt="circleOutline"
-          className="absolute top-24 lg:top-0 -right-6 bg-transparent h-[600px] lg:h-[800px]"
-        />
-        <img
-          src="/images/pink-l.png"
-          alt="landingGradient_3"
-          className="absolute top-[200px] left-0 bg-transparent h-[1500px] w-[1500px] lg:h-[2000px] lg:w-[2000px] lg:-translate-x-[10%] -translate-x-[5%]"
-        />
-        <img
-          src="/images/green-r.png"
-          alt="landingGradient_4"
-          className="absolute top-[1000px] right-0 bg-transparent h-[1700px] w-[1700px] lg:h-[2200px] lg:w-[2200px] lg:translate-x-[10%] translate-x-[5%]"
-        />
-        <img
-          src="/images/pink-l.png"
-          alt="landingGradient_5"
-          className="absolute top-[1800px] left-0 bg-transparent h-[1500px] w-[1500px] lg:h-[2000px] lg:w-[2000px] lg:-translate-x-[10%] -translate-x-[5%]"
-        />
-        <img
-          src="/images/indigo-br.png"
-          alt="landingGradient_7"
-          className="absolute top-[2200px] right-0 bg-transparent h-[1700px] w-[1700px] lg:h-[2200px] lg:w-[2200px] lg:translate-x-[10%] translate-x-[5%] hidden lg:block"
-        />
         <div className="absolute z-10 h-fit w-full pt-32 pb-28 lg:pt-44 px-6 lg:px-24">
           <div>
             <h1 className="text-center text-white text-3xl lg:text-6xl font-bold lg:font-extrabold leading-[1.6]">

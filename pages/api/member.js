@@ -1,8 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-
 import { client, gql } from "@/graph";
 
-const handler = async(req, res) => {
+export default async function handler(req, res) {
   const query = gql`
     query MemberPage {
       memberPages {
@@ -17,7 +16,8 @@ const handler = async(req, res) => {
             height
             width
           }
-          techLink
+          github
+          linkedin
           other
         }
         leads {
@@ -29,7 +29,8 @@ const handler = async(req, res) => {
             height
             width
           }
-          techLink
+          github
+          linkedin
           other
         }
         others {
@@ -41,7 +42,8 @@ const handler = async(req, res) => {
             height
             width
           }
-          techLink
+          github
+          linkedin
           other
         }
       }
@@ -61,5 +63,3 @@ const handler = async(req, res) => {
     });
   });
 }
-
-export default handler;

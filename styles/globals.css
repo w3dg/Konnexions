@@ -194,7 +194,6 @@ body {
   box-sizing: border-box;
   padding: 0.5em;
 }
-
 .scroller img {
   display: block;
   object-fit: cover;
@@ -211,4 +210,86 @@ body {
 }
 .scroller:hover, .scroller:focus {
   animation-play-state: paused;
+}
+
+/* Color Orbs in Home Page */
+.colorsb, .colorst {
+  display: block;
+  font-size: 52px;
+  color: transparent;
+}
+
+.colorst::before, .colorst::after,
+.colorsb::before, .colorsb::after {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 3em;
+  height: 3em;
+  content: ".";
+  mix-blend-mode: screen;
+  text-shadow:
+    0.4212038007em 1.1704402095em 7px rgba(0, 189, 255, 0.9),
+    1.2897835609em 1.5224822928em 7px rgba(0, 97, 255, 0.9),
+    1.8771978214em 2.3029056938em 7px rgba(0, 255, 213, 0.9),
+    -0.0991724933em 0.2264203665em 7px rgba(0, 167, 255, 0.9),
+    0.0914772132em 0.8620070842em 7px rgba(0, 255, 251, 0.9),
+    1.8597010537em 1.7091647971em 7px rgba(25, 0, 255, 0.9),
+    1.2589517298em 2.2999028574em 7px rgba(181, 0, 255, 0.9),
+    -0.3227840313em 0.9961799132em 7px rgba(88, 0, 255, 0.9),
+    -0.2193462311em 0.1259269508em 7px rgba(255, 0, 117, 0.9),
+    -0.3761419811em 2.0123642622em 7px rgba(0, 150, 255, 0.9),
+    0.1658760894em -0.1065206087em 7px rgba(0, 118, 255, 0.9),
+    1.730632595em 0.6377328262em 7px rgba(0, 177, 255, 0.9),
+    2.040999367em 1.8487144528em 7px rgba(255, 0, 169, 0.9),
+    0.5213851477em 2.4282004582em 7px rgba(95, 0, 255, 0.9),
+    0.3845898714em 2.0185100064em 7px rgba(231, 0, 255, 0.9),
+    0.4477075368em 0.2377211145em 7px rgba(255, 86, 0, 0.9),
+    0.9414030748em 1.3819596192em 7px rgba(0, 64, 255, 0.9),
+    1.0319135099em 0.2742705142em 7px rgba(0, 147, 255, 0.9),
+    1.0744036383em 0.3642641342em 7px rgba(224, 0, 255, 0.9),
+    0.0024500965em 0.7369662278em 7px rgba(0, 255, 188, 0.9),
+    1.0694506038em 2.1785225232em 7px rgba(0, 26, 255, 0.9),
+    1.9355506233em 0.4971501263em 7px rgba(113, 0, 255, 0.9),
+    1.675078863em 0.3526396632em 7px rgba(0, 186, 255, 0.9),
+    2.2790961968em -0.1204840183em 7px rgba(167, 0, 255, 0.9),
+    1.8144814271em 0.8180630628em 7px rgba(0, 255, 212, 0.9),
+    1.7103569414em 1.9165265589em 7px rgba(199, 0, 255, 0.9),
+    1.6716447127em 2.0758661014em 7px rgba(0, 160, 255, 0.9),
+    0.3479515225em 1.0303597264em 7px rgba(255, 22, 0, 0.9),
+    0.4974651917em -0.0420380434em 7px rgba(66, 0, 255, 0.9),
+    -0.2861408584em 1.109804338em 7px rgba(19, 255, 0, 0.9),
+    0.0321194986em 2.0351419398em 7px rgba(255, 175, 0, 0.9),
+    1.5455457509em 1.3805561795em 7px rgba(237, 0, 255, 0.9),
+    2.461613905em 1.1488976666em 7px rgba(255, 107, 0, 0.9),
+    0.6052081271em -0.423061506em 7px rgba(255, 17, 0, 0.9),
+    0.9506371913em 1.3858155939em 7px rgba(255, 0, 172, 0.9);
+  animation: move infinite ease-in-out alternate;
+}
+
+.colorsb::before {
+  animation-duration: 44s;
+  animation-delay: -27s;
+}
+.colorsb::after {
+  animation-duration: 43s;
+  animation-delay: -32s;
+}
+
+.colorst::before {
+  animation-duration: 42s;
+  animation-delay: -23s;
+}
+.colorst::after {
+  animation-duration: 41s;
+  animation-delay: -19s;
+}
+
+@keyframes move {
+  from {
+    transform: rotate(0deg) scale(18);
+  }
+  to {
+    transform: rotate(360deg) scale(18);
+  }
 }

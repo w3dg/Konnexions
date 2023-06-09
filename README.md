@@ -55,7 +55,6 @@
     <li> Sliding Testimonials in Home Page </li>
     <li> Filters and Search Bar in Resources Tab </li>
     <li> Hover Effects on Cards </li>
-    <li> Parallax Effects (Scroll) in landing page </li>
     <li> Our Work Tab (Having our Projects/Events and Achievements) </li>
     <li> Blog section in Resources Tab </li>
     <li> Events Page Template </li>

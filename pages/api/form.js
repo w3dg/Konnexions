@@ -37,7 +37,12 @@ export default async function handler(req, res) {
 						queryText
 						section
 					}
-					techLink {
+					github {
+						inputType
+						queryText
+						section
+					}
+					linkedin {
 						inputType
 						queryText
 						section
