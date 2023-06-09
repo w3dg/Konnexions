@@ -38,7 +38,6 @@ export default function Teams({ data }) {
   const [page, setPage] = useState(1);
   const [members, setMembers] = useState(data.member.slice(0, 15));
   const maxPage = Math.ceil(data.member.length / 15);
-  console.log(data.member.length, page, maxPage, members);
 
   const scroll = () => {
     document.getElementById("Members").scrollIntoView({
@@ -52,19 +51,15 @@ export default function Teams({ data }) {
   const handleNext = () => {
     setPage(page + 1);
     scroll();
-    console.log(page, maxPage, members);
   };
   const handlePrev = () => {
     setPage(page - 1);
     scroll();
-    console.log(page, maxPage, members);
   };
 
   return (    
     <div className="fixed inset-0 h-screen w-screen overflow-hidden bg-[#02001A]">
-      <Head>
-        <title>Team | Konnexions</title>
-      </Head>
+      <Head><title>Team | Konnexions</title></Head>
       <Star />
       <div className="h-full w-full relative overflow-y-auto overflow-x-hidden mb-44 pb-44 scrollbar-hide">
         <div className="absolute z-10 h-fit w-full pt-32 pb-28 lg:pt-44 px-6 lg:px-24">
