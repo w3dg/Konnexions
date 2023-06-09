@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import MemberCard from "@/components/MemberCard";
 import Star from "@/components/Star";
@@ -34,6 +34,19 @@ export default function Teams({ data }) {
       else return 0;
     }
   });
+
+  const [page, setPage] = useState(0);
+  const [members, setMembers] = useState(data.member.slice(0, 15));
+  const maxPage = Math.ceil(data.member.length / 15);
+
+  const handleNext = () => {
+    setPage(page + 1);
+    setMembers(data.member.slice(page * 15, (page + 1) * 15));
+  };
+  const handlePrev = () => {
+    setPage(page - 1);
+    setMembers(data.member.slice((page - 1) * 15, page * 15));
+  };
 
   return (    
     <div className="fixed inset-0 h-screen w-screen overflow-hidden bg-[#02001A]">
@@ -108,9 +121,21 @@ export default function Teams({ data }) {
               <div className="w-56 h-[1px] bg-gradient-to-l from-transparent to-white" />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:justify-center place-items-center mt-16">
-              {data.member.map((member, i) => {
+              {members.map((member, i) => {
                 return <MemberCard data={member} key={i} />;
               })}
+            </div>
+            <div className="flex justify-between mt-10">
+              {page > 0 ?
+                <button className="py-2 px-8 rounded-md cursor-pointer bg-[#0D1527]/80 text-white hover:bg-[#02003A]" onClick={handlePrev}>
+                  Previous
+                </button> : <div />
+              }
+              {page < maxPage &&
+                <button className="py-2 px-8 rounded-md cursor-pointer bg-[#0D1527]/80 text-white hover:bg-[#02003A]" onClick={handleNext}>
+                  Next
+                </button>
+              }
             </div>
           </div>
         </div>

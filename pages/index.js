@@ -147,7 +147,7 @@ const Home = ({ data }) => {
               })}
             </div>
           </div>
-          <div className="mt-56">
+          <div className="mt-56 sm:mb-16 md:mb-4">
             <h2 className="text-center text-white text-xl lg:text-3xl font-bold lg:font-extrabold leading-[1.6]">
               {data.galleryHeading}
             </h2>
