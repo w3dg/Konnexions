@@ -25,7 +25,7 @@ export default function ResourcesCard({ data }) {
           <div className="bg-card_bg px-4 p-1 text-xs rounded mx-1">
             <span className="text-white font-medium">{data.category}</span>
           </div>
-          <a href={data.href} className="p-2" aria-label="Link">
+          <a href={data.href} target="_blank" className="p-2" aria-label="Link">
             <FaLink className="hover:text-blue-400 text-white" />
           </a>
         </div>
