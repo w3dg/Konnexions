@@ -14,11 +14,11 @@ export default function MemberCard({ data }) {
       />
       <div className="absolute inset-0 top-16 h-full w-[218px] mx-auto text-center">
         <div className="p-2 relative w-full overflow-hidden h-[200px] rounded">
-          <Image placeholder="blur" blurDataURL="/images/spinner.svg"
+          {data.image && <Image placeholder="blur" blurDataURL="/images/spinner.svg"
             height={data.image.height} width={data.image.width}
             src={data.image.url} alt={data.name}
             className="object-fit w-auto mx-auto mt-1 h-full absolute inset-0  rounded"
-          />
+          />}
         </div>
         <div className="flex flex-col justify-center items-center my-1">
           <span className="text-lg text-white font-semibold text-center inline-block">
@@ -38,17 +38,17 @@ export default function MemberCard({ data }) {
           <div className="h-[1.6px] w-12 my-auto bg-gradient-to-r from-[transparent] to-[#ffffff67]" />
         </div>
         <div className="flex flex-row justify-center items-center mt-4">
-          {data.github && data.github != "null" && (
+          {data.github && (
             <a href={data.github} className="p-2" aria-label="github">
               <FaGithub className="hover:text-gray-400 text-white" />
             </a>
           )}
-          {data.linkedin && data.linkedin != "null" && (
+          {data.linkedin && (
             <a href={data.linkedin} className="p-2" aria-label="linkedin">
               <FaLinkedin className="hover:text-blue-400 text-white" />
             </a>
           )}
-          {data.other && data.other != "null" && (
+          {data.other && (
             <a href={data.other} className="p-2" aria-label="other">
               <FontAwesomeIcon icon={faLink} className="hover:text-rose-400 text-white" />
             </a>

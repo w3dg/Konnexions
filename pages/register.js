@@ -7,7 +7,7 @@ import Connect from "@/components/Connect";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
 	faCalendarDays, faLocationDot, faArrowRight, faArrowLeft,
-	faCheck, faCheckCircle, faSpinner
+	faCheck, faCheckCircle, faSpinner, faUpload
 } from "@fortawesome/free-solid-svg-icons";
 
 export async function getServerSideProps() {
@@ -71,9 +71,9 @@ export default function Register({ data }) {
 	const [file, setFile] = useState(null);
 	const handleFileChange = (e) => {
 		setFile(e.target.files[0]);
-		form[fileInputs[0]] = e.target.files[0].name;
+		if (e.target.files[0])
+			form[fileInputs[0]] = e.target.files[0].name;
 	};
-
 	const handleFileUpload = async () => {
     if (!file) {
 			setErrormsg("Please select a file.");
@@ -192,15 +192,18 @@ export default function Register({ data }) {
 								<div className="bg-slate-900/60 md:rounded-2xl rounded-lg backdrop-blur-sm">
 									{sections[section].map((item, index) => (
 										<div key={index} className="mt-7 lg:h-20 flex flex-col lg:flex-row lg:items-center justify-between p-4 lg:p-3 rounded-md lg:space-x-4">
-											<label className="text-white font-medium shrink-0 lg:ml-4 lg:w-[20%]" for={item}>
-												{data.form[item].queryText}
-											</label>
+											{(data.form[item].inputType != "file" || data.form[item].inputType != "image") &&
+												(<label className="text-white font-medium shrink-0 lg:ml-4 lg:w-[20%]" for={item}>
+													{data.form[item].queryText}
+												</label>)
+											}
 											{data.form[item].inputType == "textarea" ?
 											<textarea name={item} value={form.item} id={item}
 												onChange={(e) => setForm({ ...form, [item]: e.target.value })}
 												className="lg:w-[70%] h-50 lg:h-full bg-[#02001A]/60 border-2 border-slate-200/60 rounded-xl flex items-center px-6 mt-2 lg:mt-0 outline-none"
 												style={{ resize: "none" }}
-											/> : data.form[item].inputType == "dropdown" ?
+											/> :
+											data.form[item].inputType == "dropdown" ?
 											<select name={item} value={form.item} id={item}
 												onChange={(e) => setForm({ ...form, [item]: e.target.value })}
 												className="lg:w-[70%] h-12 lg:h-full bg-[#02001A]/60 border-2 border-slate-200/60 rounded-xl flex items-center px-6 mt-2 lg:mt-0 outline-none"
@@ -208,7 +211,8 @@ export default function Register({ data }) {
 												{options.map((option, index) => (
 													<option key={`option ${index}`} value={option}>{option}</option>
 												))}
-											</select> : data.form[item].inputType == "radio" ?
+											</select> :
+											data.form[item].inputType == "radio" ?
 											<div className="flex items-center space-x-4">
 												{options.map((option, index) => (
 													<div key={`option ${index}`} className="flex items-center space-x-2">
@@ -216,7 +220,8 @@ export default function Register({ data }) {
 														<span className="text-white">{option}</span>
 													</div>
 												))}
-											</div> : data.form[item].inputType == "checkbox" ?
+											</div> :
+											data.form[item].inputType == "checkbox" ?
 											<div className="flex items-center space-x-4">
 												{options.map((option, index) => (
 													<div key={`option ${index}`} className="flex items-center space-x-2">	
@@ -224,10 +229,15 @@ export default function Register({ data }) {
 														<span className="text-white">{option}</span>
 													</div>
 												))}
-											</div> : data.form[item].inputType == "file" || data.form[item].inputType == "image" ?
-											<div className="flex items-center space-x-2">
-												<input id={item} type="file" name={item} onChange={handleFileChange} />
-												<span className="text-white">{form[item]}</span>
+											</div> :
+											data.form[item].inputType == "file" || data.form[item].inputType == "image" ?
+											<div className="lg:w-[70%] h-12 lg:h-full bg-[#02001A]/60 border-2 border-slate-200/60 rounded-xl flex items-center justify-center px-6 mt-2 lg:mt-0 outline-none">
+												<label htmlFor={item} className="flex items-center space-x-2">
+													<FontAwesomeIcon icon={faUpload} className="w-6 h-6 text-white" />
+													<span className="text-white">Upload</span>
+												</label>
+												<input id={item} type="file" name={item} onChange={handleFileChange} className="hidden" />
+												{file && <span className="text-white">{file.name}</span>}
 											</div> :
 											<input type={data.form[item].inputType}
 												name={item} value={form.item} id={item}
