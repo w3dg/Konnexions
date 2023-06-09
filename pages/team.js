@@ -35,17 +35,29 @@ export default function Teams({ data }) {
     }
   });
 
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(1);
   const [members, setMembers] = useState(data.member.slice(0, 15));
   const maxPage = Math.ceil(data.member.length / 15);
+  console.log(data.member.length, page, maxPage, members);
+
+  const scroll = () => {
+    document.getElementById("Members").scrollIntoView({
+      behavior: "smooth",
+    });
+  };
+  React.useEffect(() => {
+    setMembers(data.member.slice((page - 1) * 15, page * 15));
+  }, [page]);
 
   const handleNext = () => {
     setPage(page + 1);
-    setMembers(data.member.slice(page * 15, (page + 1) * 15));
+    scroll();
+    console.log(page, maxPage, members);
   };
   const handlePrev = () => {
     setPage(page - 1);
-    setMembers(data.member.slice((page - 1) * 15, page * 15));
+    scroll();
+    console.log(page, maxPage, members);
   };
 
   return (    
@@ -112,7 +124,7 @@ export default function Teams({ data }) {
             </div>
           </div>
 
-          <div className="mt-36">
+          <div className="mt-36" id="Members">
             <div className="flex items-center justify-center space-x-8 lg:space-x-16">
               <div className="w-56 h-[1px] bg-gradient-to-r from-transparent to-white" />
               <h2 className="text-white text-xl font-medium whitespace-nowrap">
@@ -126,16 +138,14 @@ export default function Teams({ data }) {
               })}
             </div>
             <div className="flex justify-between mt-10">
-              {page > 0 ?
+              {page > 1 ?
                 <button className="py-2 px-8 rounded-md cursor-pointer bg-[#0D1527]/80 text-white hover:bg-[#02003A]" onClick={handlePrev}>
                   Previous
-                </button> : <div />
-              }
+                </button> : <div /> }
               {page < maxPage &&
                 <button className="py-2 px-8 rounded-md cursor-pointer bg-[#0D1527]/80 text-white hover:bg-[#02003A]" onClick={handleNext}>
                   Next
-                </button>
-              }
+                </button> }
             </div>
           </div>
         </div>
