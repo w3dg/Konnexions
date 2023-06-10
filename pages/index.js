@@ -23,7 +23,7 @@ export async function getServerSideProps() {
   };
 }
 
-const Home = ({ data }) => {
+export default function Home({ data }) {
   const [currEvent, setCurrEvent] = useState(null);
 
   useEffect(() => {
@@ -36,6 +36,18 @@ const Home = ({ data }) => {
     else if (a.date > b.date) return -1;
     else return 0;
   });
+
+  const [events, setEvents] = useState(data.events.slice(0, 6));
+  
+  const handleAllEvents = () => {
+    setEvents(data.events);
+  };
+  const handleLessEvents = () => {
+    setEvents(data.events.slice(0, 6));
+    document.getElementById("Events").scrollIntoView({
+      behavior: "smooth",
+    });
+  };
 
   return (
     <div className="h-screen w-screen fixed inset-0 bg-[#02001A] overflow-hidden scrollbar-hide">
@@ -121,7 +133,7 @@ const Home = ({ data }) => {
               })}
             </div>
           </div>
-          <div className="mt-56">
+          <div className="mt-56" id="Events">
             <h2 className="text-center text-white text-xl lg:text-3xl font-bold lg:font-extrabold leading-[1.6]">
               {data.eventsHeading}
             </h2>
@@ -129,10 +141,20 @@ const Home = ({ data }) => {
               {data.eventsDescription}
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:justify-center place-items-center mt-16">
-              {data.events.map((item, i) => {
+              {events.map((item, i) => {
                 return <EventsCard data={item} key={`event_${i}`} />;
               })}
             </div>
+            {data.events.length > 6 && <div className="flex justify-center mt-10">
+              {events.length === 6 ?
+                <button className="py-2 px-8 rounded-md cursor-pointer bg-[#0D1527]/80 text-white hover:bg-[#02003A]" onClick={
+                  handleAllEvents
+                }>Show All</button> :
+                <button className="py-2 px-8 rounded-md cursor-pointer bg-[#0D1527]/80 text-white hover:bg-[#02003A]" onClick={
+                  handleLessEvents
+                }>Show Less</button>
+              }
+            </div>}
           </div>
           <div className="mt-56">
             <h2 className="text-center text-white text-xl lg:text-3xl font-bold lg:font-extrabold leading-[1.6]">
@@ -161,5 +183,3 @@ const Home = ({ data }) => {
     </div>
   );
 }
-
-export default Home;
