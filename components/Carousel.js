@@ -40,7 +40,7 @@ export default function Carousel({ images }) {
 						if (index === currentSlide) {
 							return (
 								<div className="h-auto w-[90%]" key={`carousel-image-${index}`}>
-									<Image
+									<Image important
 										height={item.image.height} width={item.image.width}
 										src={item.image.url} alt={item.name}
 										className="object-fit h-full lg:w-auto absolute inset-0 mx-auto animate-fade-in"
