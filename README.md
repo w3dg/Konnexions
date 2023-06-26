@@ -23,43 +23,42 @@
 </p>
 <br />
 
-<h4 align="center">Built with</h4>
-<p>
-  <a href="https://nextjs.org/"> NextJS </a> - Frontend Framework <br />
-  <a href="https://tailwindcss.com/"> TailwindCSS </a> - Utility-first CSS framework <br />
-  <a href="https://hyvor.com/hygraph"> Hygraph </a> - For Content Management <br />
-  <a href="https://www.netlify.com/"> Netlify </a> - For Deployment <br />
-  <a href="https://www.figma.com/"> Figma </a> - For Designing <br />
-  <a href="https://fontawesome.com/"> FontAwesome </a> - For Icons <br />
-</p>
-<br />
+## Built with
+- [NextJS](https://nextjs.org/) - Frontend Framework
+- [TailwindCSS](https://tailwindcss.com/) - Utility-first CSS framework
+- [Hygraph](https://hyvor.com/hygraph) - For Content Management
+- [Netlify](https://www.netlify.com/) - For Deployment
+- [Figma](https://www.figma.com/) - For Designing
+- [FontAwesome](https://fontawesome.com/) - For Icons
 
-<h4 align="center">For Developers</h4>
-<p>
-  <strong>Clone the repository</strong>:
-  <code>git clone https://github.com/kiit-konnexions/konnexions.git</code> <br />
-  <strong>Install Dependencies</strong>:
-  <code>npm install</code> <br />
-  <strong>For Development</strong>: 
-  <code>npm run dev</code> <br />
-  <strong>For Production Build</strong>:
-  <code>npm run build</code> <br />
-  <strong>For Production Preview</strong>:
-  <code>npm run start</code> <br />
-</p>
-<br />
+## For Developers
+1. Clone the repository
+```bash
+git clone https://github.com/kiit-konnexions/konnexions.git
+```
+2. Install Dependencies
+```bash
+npm install
+```
+3. For Development
+```bash
+npm run dev
+```
+4. For Production Build
+```bash
+npm run build
+```
+5. For Production Preview
+```bash
+npm run start
+```
 
-<h4 align="center">ToDos</h4>
-<p>
-  <ul>
-    <li> Sliding Testimonials in Home Page </li>
-    <li> Filters and Search Bar in Resources Tab </li>
-    <li> Hover Effects on Cards </li>
-    <li> Our Work Tab (Having our Projects/Events and Achievements) </li>
-    <li> Blog section in Resources Tab </li>
-    <li> Events Page Template </li>
-    <li> Login/Signup Modal </li>
-    <li> Dashboard Page for members </li>
-  </ul>
-</p>
-<br />
+## ToDos
+- [ ] Sliding Testimonials in Home Page
+- [ ] Filters and Search Bar in Resources Tab
+- [ ] Hover Effects on Cards
+- [ ] Our Work Tab (Having our Projects/Events and Achievements)
+- [ ] Blog section in Resources Tab
+- [ ] Events Page Template
+- [ ] Login/Signup Modal
+- [ ] Dashboard Page for members
