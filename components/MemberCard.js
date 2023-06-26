@@ -39,17 +39,17 @@ export default function MemberCard({ data }) {
         </div>
         <div className="flex flex-row justify-center items-center mt-4">
           {data.github && (
-            <a href={data.github} className="p-2" aria-label="github">
+            <a href={data.github} className="p-2" aria-label="github" target="_blank" rel="noopener noreferrer">
               <FaGithub className="hover:text-gray-400 text-white" />
             </a>
           )}
           {data.linkedin && (
-            <a href={data.linkedin} className="p-2" aria-label="linkedin">
+            <a href={data.linkedin} className="p-2" aria-label="linkedin" target="_blank" rel="noopener noreferrer">
               <FaLinkedin className="hover:text-blue-400 text-white" />
             </a>
           )}
           {data.other && (
-            <a href={data.other} className="p-2" aria-label="other">
+            <a href={data.other} className="p-2" aria-label="other" target="_blank" rel="noopener noreferrer">
               <FontAwesomeIcon icon={faLink} className="hover:text-rose-400 text-white" />
             </a>
           )}
