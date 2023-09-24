@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFacebook,
@@ -6,10 +6,22 @@ import {
   faLinkedinIn,
   faGithub,
 } from "@fortawesome/free-brands-svg-icons";
-import { faEnvelope, faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import {
+  faEnvelope,
+  faLocationDot
+} from "@fortawesome/free-solid-svg-icons";
 
 const Footer = () => {
-  const year = new Date().getFullYear();
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 640);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 640);
+    }
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const link =
     "https://www.google.com/maps/place/KIIT+Student+Activity+Center+-+KSAC/@20.3548831,85.8191383,16.7z/data=!4m6!3m5!1s0x3a19093cc3e1974b:0x85a345e1f4fcce86!8m2!3d20.3566159!4d85.818928!16s%2Fg%2F11bx2gww9n?entry=ttu";
   const socials = [
@@ -51,8 +63,8 @@ const Footer = () => {
     },
   ];
 
-  return (
-    <footer className="before:content-[''] before:w-1 before:h-24 before:bg-gray-100 before:m-2  nav-footer fixed right-5 bottom-5 flex flex-col bg-transparent backdrop-blur text-white text-sm lg:text-base z-30 gap-4">
+  const content = () => {
+    return (<>
       {socials.map((social) => {
         return (
           <a
@@ -69,7 +81,24 @@ const Footer = () => {
           </a>
         );
       })}
-    </footer>
+    </>)
+  }
+
+  return (
+    isMobile ? (
+      <footer className="fixed bottom-0 flex bg-transparent backdrop-blur text-white text-sm inset-x-0 z-30">
+        <div className="container mx-auto px-16">
+            <div className="flex flex-row my-1 space-x-2 justify-between items-center">
+              {content()}
+            </div>
+        </div>
+      </footer>
+    ) : (
+      <footer className="before:content-[''] before:w-1 before:h-24 before:bg-gradient-to-t from-white before:m-2 fixed
+        left-2 lg:left-12 bottom-2 lg:bottom-8 flex flex-col bg-transparent text-white text-base z-30 gap-4">
+        {content()}
+      </footer>
+    )
   );
 };
 

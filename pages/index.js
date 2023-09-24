@@ -59,7 +59,7 @@ export default function Home({ data }) {
         <div className="colorsb" />
       </div>
       <div className="h-full w-full relative overflow-y-auto overflow-x-hidden mb-44 pb-44 scrollbar-hide">
-        <div className="absolute z-10 h-fit w-full pt-32 pb-28 lg:pt-44 px-6 lg:px-24">
+        <div className="absolute z-10 h-fit w-full pt-32 pb-28 md:pb-2 lg:pt-44 px-6 md:px-12 lg:px-24">
           <div>
             <h1 className="text-center text-white text-3xl lg:text-6xl font-bold lg:font-extrabold leading-[1.6]">
               {data.mainHeading}
@@ -178,6 +178,9 @@ export default function Home({ data }) {
             </p>
             <Carousel images={data.images} />
           </div>
+          <h6 className="text-center text-white text-base mt-10 hidden md:block">
+            © {new Date().getFullYear()} KIIT Konnexions
+          </h6>
         </div>
       </div>
     </div>
