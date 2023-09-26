@@ -35,7 +35,10 @@ export default function Carousel({ images }) {
             if (index === currentSlide) {
               return (
                 <div key={`carousel-image-${index}`}>
-                  <Image priority height={item.image.height} width={item.image.width} src={item.image.url} alt={item.name} className="absolute inset-0 object-cover h-full mx-auto animate-fade-in" />
+                  <Image priority
+                    height={item.image.height} width={item.image.width}
+                    src={item.image.url} alt={item.name}
+                    className="absolute inset-0 object-cover h-full mx-auto animate-fade-in" />
                   <div className="absolute inset-x-0 bottom-0 items-center p-2 mx-auto text-center bg-slate-900/10 backdrop-blur-sm">
                     <span className="text-white text-xl lg:text-2xl font-bold lg:font-bold leading-[1.6]">{item.name}</span>
                     <p className="hidden text-white/60 sm:block">{item.description}</p>
@@ -55,9 +58,7 @@ export default function Carousel({ images }) {
             <div
               className={"h-1 w-6 mx-1 cursor-pointer rounded-sm " + (index === currentSlide ? "bg-gray-300" : "bg-gray-500/50")}
               key={index}
-              onClick={() => {
-                setCurrentSlide(index);
-              }}
+              onClick={ () => setCurrentSlide(index) }
             />
           );
         })}

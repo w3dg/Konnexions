@@ -16,7 +16,7 @@ export default function MemberCard({ data }) {
         <div className="p-2 relative w-full overflow-hidden h-[200px] rounded">
           {data.image && <Image placeholder="blur" blurDataURL="/images/spinner.svg"
             height={data.image.height} width={data.image.width}
-            src={data.image.url} alt={data.name}
+            src={data.image.url} alt={data.name} priority
             className="object-fit w-auto mx-auto mt-1 h-full absolute inset-0  rounded"
           />}
         </div>
@@ -24,7 +24,9 @@ export default function MemberCard({ data }) {
           <span className="text-lg text-white font-semibold text-center inline-block">
             {data.name}
           </span>
-          <span className="text-white text-center inline-block">
+          <span className="text-white text-center inline-block"
+            onClick={() => window.open(`mailto:${data.email}`)}
+          >
             {data.email.split("@")[0]}
           </span>
         </div>
