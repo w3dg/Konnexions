@@ -38,7 +38,8 @@ export default function Carousel({ images }) {
                   <Image priority
                     height={item.image.height} width={item.image.width}
                     src={item.image.url} alt={item.name}
-                    className="absolute inset-0 object-cover h-full mx-auto animate-fade-in" />
+                    className="absolute inset-0 object-cover h-full mx-auto animate-fade-in"
+                  />
                   <div className="absolute inset-x-0 bottom-0 items-center p-2 mx-auto text-center bg-slate-900/10 backdrop-blur-sm">
                     <span className="text-white text-xl lg:text-2xl font-bold lg:font-bold leading-[1.6]">{item.name}</span>
                     <p className="hidden text-white/60 sm:block">{item.description}</p>
