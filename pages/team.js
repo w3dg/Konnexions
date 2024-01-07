@@ -57,9 +57,11 @@ export default function Teams({ data }) {
     scroll();
   };
 
-  return (    
+  return (
     <div className="fixed inset-0 h-screen w-screen overflow-hidden bg-[#02001A]">
-      <Head><title>Team | Konnexions</title></Head>
+      <Head>
+        <title>Team | Konnexions</title>
+      </Head>
       <Star />
       <div className="h-full w-full relative overflow-y-auto overflow-x-hidden mb-44 pb-44 scrollbar-hide">
         <div className="absolute z-10 h-fit w-full pt-32 pb-28 lg:pt-44 px-6 lg:px-24">
@@ -91,7 +93,39 @@ export default function Teams({ data }) {
             <div className="flex items-center justify-center space-x-8 lg:space-x-16">
               <div className="w-56 h-[1px] bg-gradient-to-r from-transparent to-white" />
               <h2 className="text-white text-xl font-medium whitespace-nowrap">
+                Mentors
+              </h2>
+              <div className="w-56 h-[1px] bg-gradient-to-l from-transparent to-white" />
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:justify-center place-items-center mt-16">
+              {data.leads.map((member, i) => {
+                return <MemberCard data={member} key={i} />;
+              })}
+            </div>
+          </div>
+
+          <div className="mt-36">
+            <div className="flex items-center justify-center space-x-8 lg:space-x-16">
+              <div className="w-56 h-[1px] bg-gradient-to-r from-transparent to-white" />
+              <h2 className="text-white text-xl font-medium whitespace-nowrap">
                 Coordinators
+              </h2>
+              <div className="w-56 h-[1px] bg-gradient-to-l from-transparent to-white" />
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:justify-center place-items-center mt-16">
+              {data.others.map((member, i) => {
+                if (member.domain.includes("Coordinator")) {
+                  return <MemberCard data={member} key={i} />;
+                }
+              })}
+            </div>
+          </div>
+
+          <div className="mt-36">
+            <div className="flex items-center justify-center space-x-8 lg:space-x-16">
+              <div className="w-56 h-[1px] bg-gradient-to-r from-transparent to-white" />
+              <h2 className="text-white text-xl font-medium whitespace-nowrap">
+                Asst. Coordinators
               </h2>
               <div className="w-56 h-[1px] bg-gradient-to-l from-transparent to-white" />
             </div>
@@ -133,18 +167,28 @@ export default function Teams({ data }) {
               })}
             </div>
             <div className="flex justify-between mt-10">
-              {page > 1 ?
-                <button className="py-2 px-8 rounded-md cursor-pointer bg-[#0D1527]/80 text-white hover:bg-[#02003A]" onClick={handlePrev}>
+              {page > 1 ? (
+                <button
+                  className="py-2 px-8 rounded-md cursor-pointer bg-[#0D1527]/80 text-white hover:bg-[#02003A]"
+                  onClick={handlePrev}
+                >
                   Previous
-                </button> : <div /> }
-              {page < maxPage &&
-                <button className="py-2 px-8 rounded-md cursor-pointer bg-[#0D1527]/80 text-white hover:bg-[#02003A]" onClick={handleNext}>
+                </button>
+              ) : (
+                <div />
+              )}
+              {page < maxPage && (
+                <button
+                  className="py-2 px-8 rounded-md cursor-pointer bg-[#0D1527]/80 text-white hover:bg-[#02003A]"
+                  onClick={handleNext}
+                >
                   Next
-                </button> }
+                </button>
+              )}
             </div>
           </div>
         </div>
       </div>
     </div>
   );
-};
+}
