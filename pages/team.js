@@ -20,42 +20,70 @@ export async function getServerSideProps() {
 }
 
 export default function Teams({ data }) {
-  data.leads.sort((a, b) => {
-    if (a.name < b.name) return -1;
-    else if (a.name > b.name) return 1;
-    else return 0;
-  });
-  data.member.sort((a, b) => {
-    if (a.domain < b.domain) return -1;
-    else if (a.domain > b.domain) return 1;
-    else {
-      if (a.name < b.name) return -1;
-      else if (a.name > b.name) return 1;
-      else return 0;
-    }
-  });
+  let domainsKeys = [
+    {
+      key: "webdev",
+      value: "Web Development",
+    },
+    {
+      key: "appdev",
+      value: "App Development",
+    },
+    {
+      key: "ml",
+      value: "Machine Learning",
+    },
+    {
+      key: "content",
+      value: "Content Writing",
+    },
+    {
+      key: "video",
+      value: "Video Editing",
+    },
+    {
+      key: "hr_marketing",
+      value: "HR & Marketing",
+    },
+    {
+      key: "graphic",
+      value: "Graphic Designing",
+    },
 
-  const [page, setPage] = useState(1);
-  const [members, setMembers] = useState(data.member.slice(0, 15));
-  const maxPage = Math.ceil(data.member.length / 15);
+    {
+      key: "ui_ux",
+      value: "UI/UX Designing",
+    },
+    {
+      key: "faculy",
+      value: "Faculty-in-Charge",
+    },
+  ];
+  let faculties = [];
+  let leads = data.filter((member) => member.position.includes("lead"));
+  console.log(data.filter((member) => member.position.includes("faculty")));
 
-  const scroll = () => {
-    document.getElementById("Members").scrollIntoView({
-      behavior: "smooth",
-    });
-  };
-  React.useEffect(() => {
-    setMembers(data.member.slice((page - 1) * 15, page * 15));
-  }, [page]);
+  //   const [page, setPage] = useState(1);
+  //   const [members, setMembers] = useState(data.member.slice(0, 15));
+  //   const maxPage = Math.ceil(data.member.length / 15);
 
-  const handleNext = () => {
-    setPage(page + 1);
-    scroll();
-  };
-  const handlePrev = () => {
-    setPage(page - 1);
-    scroll();
-  };
+  //   const scroll = () => {
+  //     document.getElementById("Members").scrollIntoView({
+  //       behavior: "smooth",
+  //     });
+  //   };
+  //   React.useEffect(() => {
+  //     setMembers(data.member.slice((page - 1) * 15, page * 15));
+  //   }, [page]);
+
+  //   const handleNext = () => {
+  //     setPage(page + 1);
+  //     scroll();
+  //   };
+  //   const handlePrev = () => {
+  //     setPage(page - 1);
+  //     scroll();
+  //   };
 
   return (
     <div className="fixed inset-0 h-screen w-screen overflow-hidden bg-[#02001A]">
@@ -72,37 +100,9 @@ export default function Teams({ data }) {
             {data.description}
           </p>
 
-          <div className="mt-36">
-            <div className="flex items-center justify-center space-x-8 lg:space-x-16">
-              <div className="w-56 h-[1px] bg-gradient-to-r from-transparent to-white" />
-              <h2 className="text-white text-xl font-medium whitespace-nowrap">
-                Faculty-in-Charge
-              </h2>
-              <div className="w-56 h-[1px] bg-gradient-to-l from-transparent to-white" />
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:justify-center place-items-center mt-16">
-              {data.others.map((member, i) => {
-                if (member.domain == "Faculty-in-Charge") {
-                  return <MemberCard data={member} key={i} />;
-                }
-              })}
-            </div>
-          </div>
+          {/* 
 
-          <div className="mt-36">
-            <div className="flex items-center justify-center space-x-8 lg:space-x-16">
-              <div className="w-56 h-[1px] bg-gradient-to-r from-transparent to-white" />
-              <h2 className="text-white text-xl font-medium whitespace-nowrap">
-                Mentors
-              </h2>
-              <div className="w-56 h-[1px] bg-gradient-to-l from-transparent to-white" />
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:justify-center place-items-center mt-16">
-              {data.leads.map((member, i) => {
-                return <MemberCard data={member} key={i} />;
-              })}
-            </div>
-          </div>
+        
 
           <div className="mt-36">
             <div className="flex items-center justify-center space-x-8 lg:space-x-16">
@@ -136,6 +136,76 @@ export default function Teams({ data }) {
                 }
               })}
             </div>
+          </div> */}
+
+          <div className="mt-36">
+            <div className="flex items-center justify-center space-x-8 lg:space-x-16">
+              <div className="w-56 h-[1px] bg-gradient-to-r from-transparent to-white" />
+              <h2 className="text-white text-xl font-medium whitespace-nowrap">
+                Faculty-in-Charge
+              </h2>
+              <div className="w-56 h-[1px] bg-gradient-to-l from-transparent to-white" />
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:justify-center place-items-center mt-16">
+              {data
+                .filter((member) => member.position.includes("faculty"))
+                .map((member, i) => {
+                  return <MemberCard data={member} key={i} />;
+                })}
+            </div>
+          </div>
+
+          <div className="mt-36">
+            <div className="flex items-center justify-center space-x-8 lg:space-x-16">
+              <div className="w-56 h-[1px] bg-gradient-to-r from-transparent to-white" />
+              <h2 className="text-white text-xl font-medium whitespace-nowrap">
+                Mentors
+              </h2>
+              <div className="w-56 h-[1px] bg-gradient-to-l from-transparent to-white" />
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:justify-center place-items-center mt-16">
+              {data
+                .filter((member) => member.position.includes("mentor"))
+                .map((member, i) => {
+                  return <MemberCard data={member} key={i} />;
+                })}
+            </div>
+          </div>
+
+          <div className="mt-36">
+            <div className="flex items-center justify-center space-x-8 lg:space-x-16">
+              <div className="w-56 h-[1px] bg-gradient-to-r from-transparent to-white" />
+              <h2 className="text-white text-xl font-medium whitespace-nowrap">
+                Coordinators
+              </h2>
+              <div className="w-56 h-[1px] bg-gradient-to-l from-transparent to-white" />
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:justify-center place-items-center mt-16">
+              {data
+                .filter((member) => member.position.includes("coordinator"))
+                .map((member, i) => {
+                  return <MemberCard data={member} key={i} />;
+                })}
+            </div>
+          </div>
+
+          <div className="mt-36">
+            <div className="flex items-center justify-center space-x-8 lg:space-x-16">
+              <div className="w-56 h-[1px] bg-gradient-to-r from-transparent to-white" />
+              <h2 className="text-white text-xl font-medium whitespace-nowrap">
+                Asst. Coordinators
+              </h2>
+              <div className="w-56 h-[1px] bg-gradient-to-l from-transparent to-white" />
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:justify-center place-items-center mt-16">
+              {data
+                .filter((member) =>
+                  member.position.includes("asst_coordinator")
+                )
+                .map((member, i) => {
+                  return <MemberCard data={member} key={i} />;
+                })}
+            </div>
           </div>
 
           <div className="mt-36">
@@ -147,9 +217,11 @@ export default function Teams({ data }) {
               <div className="w-56 h-[1px] bg-gradient-to-l from-transparent to-white" />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:justify-center place-items-center mt-16">
-              {data.leads.map((member, i) => {
-                return <MemberCard data={member} key={i} />;
-              })}
+              {data
+                .filter((member) => member.position.includes("lead"))
+                .map((member, i) => {
+                  return <MemberCard data={member} key={i} />;
+                })}
             </div>
           </div>
 
@@ -162,11 +234,13 @@ export default function Teams({ data }) {
               <div className="w-56 h-[1px] bg-gradient-to-l from-transparent to-white" />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:justify-center place-items-center mt-16">
-              {members.map((member, i) => {
-                return <MemberCard data={member} key={i} />;
-              })}
+              {data
+                .filter((member) => member.position.includes("member"))
+                .map((member, i) => {
+                  return <MemberCard data={member} key={i} />;
+                })}
             </div>
-            <div className="flex justify-between mt-10">
+            {/* <div className="flex justify-between mt-10">
               {page > 1 ? (
                 <button
                   className="py-2 px-8 rounded-md cursor-pointer bg-[#0D1527]/80 text-white hover:bg-[#02003A]"
@@ -185,7 +259,7 @@ export default function Teams({ data }) {
                   Next
                 </button>
               )}
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

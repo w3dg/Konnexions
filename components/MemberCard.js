@@ -1,7 +1,7 @@
 import React from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLink } from '@fortawesome/free-solid-svg-icons'
+import { faLink } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
 
 export default function MemberCard({ data }) {
@@ -14,17 +14,25 @@ export default function MemberCard({ data }) {
       />
       <div className="absolute inset-0 top-16 h-full w-[218px] mx-auto text-center">
         <div className="p-2 relative w-full overflow-hidden h-[200px] rounded">
-          {data.image && <Image placeholder="blur" blurDataURL="/images/spinner.svg"
-            height={data.image.height} width={data.image.width}
-            src={data.image.url} alt={data.name} priority
-            className="object-fit w-auto mx-auto mt-1 h-full absolute inset-0  rounded"
-          />}
+          {data.image && (
+            <Image
+              placeholder="blur"
+              blurDataURL="/images/spinner.svg"
+              height={data.image.height}
+              width={data.image.width}
+              src={data.image.url}
+              alt={data.name}
+              priority
+              className="object-fit w-auto mx-auto mt-1 h-full absolute inset-0  rounded object-cover"
+            />
+          )}
         </div>
         <div className="flex flex-col justify-center items-center my-1">
           <span className="text-lg text-white font-semibold text-center inline-block">
             {data.name}
           </span>
-          <span className="text-white text-center inline-block"
+          <span
+            className="text-white text-center inline-block"
             onClick={() => window.open(`mailto:${data.email}`)}
           >
             {data.email.split("@")[0]}
@@ -41,22 +49,43 @@ export default function MemberCard({ data }) {
         </div>
         <div className="flex flex-row justify-center items-center mt-4">
           {data.github && (
-            <a href={data.github} className="p-2" aria-label="github" target="_blank" rel="noopener noreferrer">
+            <a
+              href={data.github}
+              className="p-2"
+              aria-label="github"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FaGithub className="hover:text-gray-400 text-white" />
             </a>
           )}
           {data.linkedin && (
-            <a href={data.linkedin} className="p-2" aria-label="linkedin" target="_blank" rel="noopener noreferrer">
+            <a
+              href={data.linkedin}
+              className="p-2"
+              aria-label="linkedin"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FaLinkedin className="hover:text-blue-400 text-white" />
             </a>
           )}
           {data.other && (
-            <a href={data.other} className="p-2" aria-label="other" target="_blank" rel="noopener noreferrer">
-              <FontAwesomeIcon icon={faLink} className="hover:text-rose-400 text-white" />
+            <a
+              href={data.other}
+              className="p-2"
+              aria-label="other"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FontAwesomeIcon
+                icon={faLink}
+                className="hover:text-rose-400 text-white"
+              />
             </a>
           )}
         </div>
       </div>
     </div>
   );
-};
+}

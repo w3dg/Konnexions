@@ -38,7 +38,7 @@ export default function Home({ data }) {
   });
 
   const [events, setEvents] = useState(data.events.slice(0, 6));
-  
+
   const handleAllEvents = () => {
     setEvents(data.events);
   };
@@ -80,23 +80,32 @@ export default function Home({ data }) {
             <div className="flex items-center justify-center space-x-4 mt-10 lg:mt-16">
               {data.socialMedias.map((item) => {
                 return (
-                  <a aria-label={item.name}
+                  <a
+                    aria-label={item.name}
                     key={item.name}
                     href={item.link}
                     target="_blank"
                     rel="noreferrer"
-                  ><Image priority
-                    placeholder="blur" blurDataURL="/images/spinner.svg"
-                    height={item.icon.height} width={item.icon.width}
-                    src={item.icon.url}
-                    alt={item.name}
-                    className="h-8 w-8 cursor-pointer"
-                  /></a>
+                  >
+                    <Image
+                      priority
+                      placeholder="blur"
+                      blurDataURL="/images/spinner.svg"
+                      height={item.icon.height}
+                      width={item.icon.width}
+                      src={item.icon.url}
+                      alt={item.name}
+                      className="h-8 w-8 cursor-pointer"
+                    />
+                  </a>
                 );
               })}
             </div>
             {currEvent && (
-              <div onClick={handleRegisterClick} className="flex items-center justify-center mt-4 cursor-pointer">
+              <div
+                onClick={handleRegisterClick}
+                className="flex items-center justify-center mt-4 cursor-pointer"
+              >
                 <div className="h-16 hover:bg-white/5 border border-white/20 rounded-lg flex items-center px-2 transition-all z-30">
                   <div className="h-12 w-12 relative">
                     <Image
@@ -145,16 +154,25 @@ export default function Home({ data }) {
                 return <EventsCard data={item} key={`event_${i}`} />;
               })}
             </div>
-            {data.events.length > 6 && <div className="flex justify-center mt-10">
-              {events.length === 6 ?
-                <button className="py-2 px-8 rounded-md cursor-pointer bg-[#0D1527]/80 text-white hover:bg-[#02003A]" onClick={
-                  handleAllEvents
-                }>Show All</button> :
-                <button className="py-2 px-8 rounded-md cursor-pointer bg-[#0D1527]/80 text-white hover:bg-[#02003A]" onClick={
-                  handleLessEvents
-                }>Show Less</button>
-              }
-            </div>}
+            {data.events.length > 6 && (
+              <div className="flex justify-center mt-10">
+                {events.length === 6 ? (
+                  <button
+                    className="py-2 px-8 rounded-md cursor-pointer bg-[#0D1527]/80 text-white hover:bg-[#02003A]"
+                    onClick={handleAllEvents}
+                  >
+                    Show All
+                  </button>
+                ) : (
+                  <button
+                    className="py-2 px-8 rounded-md cursor-pointer bg-[#0D1527]/80 text-white hover:bg-[#02003A]"
+                    onClick={handleLessEvents}
+                  >
+                    Show Less
+                  </button>
+                )}
+              </div>
+            )}
           </div>
           <div className="mt-56">
             <h2 className="text-center text-white text-xl lg:text-3xl font-bold lg:font-extrabold leading-[1.6]">

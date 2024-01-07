@@ -2,64 +2,62 @@
 import { client, gql } from "@/graph";
 
 export default async function handler(req, res) {
-  const query = gql`
-    query MemberPage {
-      memberPages {
-        heading
-        description
-        member(first: 120) {
-          name
-          email
-          domain
-          image {
-            url
-            height
-            width
-          }
-          github
-          linkedin
-          other
+  const query1 = gql`
+    query MyQuery {
+      members(first: 100) {
+        domain
+        email
+        github
+        id
+        image {
+          url
+          width
+          height
         }
-        leads {
-          name
-          email
-          domain
-          image {
-            url
-            height
-            width
-          }
-          github
-          linkedin
-          other
-        }
-        others {
-          name
-          email
-          domain
-          image {
-            url
-            height
-            width
-          }
-          github
-          linkedin
-          other
-        }
+        name
+        linkedin
+        position
+        other
       }
     }
   `;
-  
-  await client.request(query)
-  .then((data) => {
-    console.log(data);
-    res.status(200).json({
-      data: data.memberPages[0],
-    });
-  }).catch((err) => {
-    console.log(err);
-    res.status(500).json({
-      error: err,
-    });
-  });
+
+  const query2 = gql`
+    query MyQuery {
+      members(last: 12) {
+        domain
+        email
+        github
+        id
+        image {
+          url
+          width
+          height
+        }
+        name
+        linkedin
+        position
+        other
+      }
+    }
+  `;
+
+  let members = [];
+
+  await client
+    .request(query1)
+    .then((data) => {
+      members = data.members;
+    })
+    .catch((err) => {});
+
+  await client
+    .request(query2)
+    .then((data) => {
+      members = members.concat(data.members);
+    })
+    .catch((err) => {});
+
+  console.log(members);
+  res.status(200).json({ data: members });
 }
