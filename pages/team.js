@@ -94,10 +94,11 @@ export default function Teams({ data }) {
       <div className="h-full w-full relative overflow-y-auto overflow-x-hidden mb-44 pb-44 scrollbar-hide">
         <div className="absolute z-10 h-fit w-full pt-32 pb-28 lg:pt-44 px-6 lg:px-24">
           <h1 className="text-center text-white text-2xl lg:text-5xl font-bold lg:font-extrabold leading-[1.6]">
-            {data.heading}
+            Meet Our Brilliant Minds
           </h1>
           <p className="lg:px-44 text-xs lg:text-sm mt-5 lg:mt-7 text-white/70 text-center leading-8 lg:leading-10">
-            {data.description}
+            Get to Know the Dedicated and Talented Individuals Behind Our
+            Success
           </p>
 
           {/* 
@@ -159,23 +160,6 @@ export default function Teams({ data }) {
             <div className="flex items-center justify-center space-x-8 lg:space-x-16">
               <div className="w-56 h-[1px] bg-gradient-to-r from-transparent to-white" />
               <h2 className="text-white text-xl font-medium whitespace-nowrap">
-                Mentors
-              </h2>
-              <div className="w-56 h-[1px] bg-gradient-to-l from-transparent to-white" />
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:justify-center place-items-center mt-16">
-              {data
-                .filter((member) => member.position.includes("mentor"))
-                .map((member, i) => {
-                  return <MemberCard data={member} key={i} />;
-                })}
-            </div>
-          </div>
-
-          <div className="mt-36">
-            <div className="flex items-center justify-center space-x-8 lg:space-x-16">
-              <div className="w-56 h-[1px] bg-gradient-to-r from-transparent to-white" />
-              <h2 className="text-white text-xl font-medium whitespace-nowrap">
                 Coordinators
               </h2>
               <div className="w-56 h-[1px] bg-gradient-to-l from-transparent to-white" />
@@ -202,6 +186,40 @@ export default function Teams({ data }) {
                 .filter((member) =>
                   member.position.includes("asst_coordinator")
                 )
+                .map((member, i) => {
+                  return <MemberCard data={member} key={i} />;
+                })}
+            </div>
+          </div>
+
+          <div className="mt-36">
+            <div className="flex items-center justify-center space-x-8 lg:space-x-16">
+              <div className="w-56 h-[1px] bg-gradient-to-r from-transparent to-white" />
+              <h2 className="text-white text-xl font-medium whitespace-nowrap">
+                Mentors
+              </h2>
+              <div className="w-56 h-[1px] bg-gradient-to-l from-transparent to-white" />
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:justify-center place-items-center mt-16">
+              {data
+                .filter((member) => member.position.includes("mentor"))
+                .map((member, i) => {
+                  return <MemberCard data={member} key={i} />;
+                })}
+            </div>
+          </div>
+
+          <div className="mt-36">
+            <div className="flex items-center justify-center space-x-8 lg:space-x-16">
+              <div className="w-56 h-[1px] bg-gradient-to-r from-transparent to-white" />
+              <h2 className="text-white text-xl font-medium whitespace-nowrap">
+                Directors
+              </h2>
+              <div className="w-56 h-[1px] bg-gradient-to-l from-transparent to-white" />
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:justify-center place-items-center mt-16">
+              {data
+                .filter((member) => member.position.includes("director"))
                 .map((member, i) => {
                   return <MemberCard data={member} key={i} />;
                 })}
